@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Weex Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <link rel="stylesheet" href="./src/assets/weex/style.css">
+  <script src="./src/assets/weex/url.js"></script>
+  <script src="./src/assets/weex/qrcode.js"></script>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Weex Preview</h1>
+  <div id="app"></div>
+  <template id="app-template">
+    <div id="app">
+      <div class="mock-phone">
+        <div class="inner">
+          <iframe id="preview" src="./index.html"></iframe>
+        </div>
+        <div class="camera"></div>
+        <div class="earpiece"></div>
+        <div class="home-btn"></div>
+      </div>
+      <div id="qrcode">
+        <h2>QRCode</h2>
+        <a :href="qrCodeUrl" target="_blank"><canvas id="ip" ref="canvas" width="200" height="200"></canvas></a>
+        <p class="bundle-url"><a :href="qrCodeUrl" target="_blank">{{ qrCodeUrl }}</a></p>
+        <h2>Full Web</h2>
+        <a class="bundle-url" :href="webUrl" target="_blank">{{ webUrl }}</a>
+      </div>
+    </div>
+  </template>
+  <script>
+    var origin = window && window.location ? window.location.origin : `http://${process.env.IP}:8080`
+    new Vue({
+      el: '#app',
+      template: '#app-template',
+      data: {
+        webUrl: origin,
+        qrCodeUrl: null
+      },
+      mounted: function () {
+        window.onload = function () {
+          window.frames[0].postMessage('requestIP', '*')
+        }
+        var self = this
+        window.addEventListener('message', function (e) {
+          if (e.origin === origin && e.data.address) {
+            var qrcodedraw = new QRCodeLib.QRCodeDraw()
+            var ipCanvas = document.getElementById('ip')
+            const qrCodeUrl = e.data.address
+            self.qrCodeUrl = qrCodeUrl
+            qrcodedraw.draw(ipCanvas, qrCodeUrl, function () {})
+          }
+        })
+      }
+    })
+  </script>
+</body>
+</html>
