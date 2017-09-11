@@ -58,7 +58,7 @@
           { src: 'https://sukura7.github.io/vue-xianyu-demo/static/banner1.jpg' },
           { src: 'https://sukura7.github.io/vue-xianyu-demo/static/ad2.png' }
         ],
-        img_amount: 3,
+        img_amount: 1,
         img1_src: 'https://sukura7.github.io/vue-xianyu-demo/static/banner1.jpg',
         img2_src: 'https://sukura7.github.io/vue-xianyu-demo/static/ad2.png',
         img3_src: 'https://sukura7.github.io/vue-xianyu-demo/static/banner1.jpg',
