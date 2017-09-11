@@ -1,9 +1,9 @@
 import indexweb from '../views/index-web'
-import home from '../views/home'
-import Login from '../views/login'
-import Register from '../views/register'
-import Reset from '../views/reset'
-import Fishpond from '../views/fishpond'
+import idlefish from '../views/idlefish.vue'
+import fishpond from '../views/fishpond.vue'
+import publish from '../views/publish.vue'
+import message from '../views/message.vue'
+import home from '../views/home.vue'
 
 const routes = [
   {
@@ -12,31 +12,31 @@ const routes = [
     component: indexweb,
     children: [
       {
-        name: 'home',
+        name: 'idlefish',
         path: '/',
+        component: idlefish
+      },
+      {
+        name: 'fishpond',
+        path: '/fishpond',
+        component: fishpond
+      },
+      {
+        name: 'publish',
+        path: '/publish',
+        component: publish
+      },
+      {
+        name: 'message',
+        path: '/message',
+        component: message
+      },
+      {
+        name: 'home',
+        path: '/home',
         component: home
       }
     ]
-  },
-  {
-    name: 'Login',
-    path: '/login',
-    component: Login
-  },
-  {
-    name: 'Register',
-    path: '/register',
-    component: Register
-  },
-  {
-    name: 'Reset',
-    path: '/reset',
-    component: Reset
-  },
-  {
-    name: 'Fishpond',
-    path: '/fishpond',
-    component: Fishpond
   }
 ]
 
