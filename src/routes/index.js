@@ -3,6 +3,7 @@ import home from '../views/home'
 import Login from '../views/login'
 import Register from '../views/register'
 import Reset from '../views/reset'
+import Fishpond from '../views/fishpond'
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     name: 'Reset',
     path: '/reset',
     component: Reset
+  },
+  {
+    name: 'Fishpond',
+    path: '/fishpond',
+    component: Fishpond
   }
 ]
 

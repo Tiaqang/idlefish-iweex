@@ -1,0 +1,133 @@
+.cell {
+  width: 740px;
+  margin-left: 5px;
+}
+
+.row {
+  width: 740px;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.img1 {
+  width: 730px;
+  height: 340px;
+}
+
+.img2 {
+  width: 356px;
+  height: 320px;
+  margin-right: 10px;
+}
+
+.img3 {
+  width: 240px;
+  height: 240px;
+  margin-right: 7px;
+}
+
+.desc-row {
+  width: 740px;
+}
+
+.desc-text {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.text1 {
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/*.praise-div {
+  position: absolute;
+  right: 2px;
+}
+
+.text2 {
+  font-size: 24px;
+  color: gray;
+}
+
+.message-div {
+  position: absolute;
+  right: 2px;
+}*/
+
+.text-right {
+  text-align: right;
+  font-size: 24px;
+  color: gray;
+  position: absolute;
+  right: 30px;
+}
+
+.bottom-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 740px;
+  padding: 12px;
+  flex-direction: row;
+  border-width: 1px;
+  border-color: lightgray;
+  border-style: solid;
+}
+
+.img-left {
+  width: 80px;
+  height: 80px;
+}
+
+.text-med {
+  width: 400px;
+  margin-left: 18px;
+  padding-top: 6px;
+}
+
+.name-up {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.desc-down {
+  margin-top: 5px;
+  font-size: 24px;
+  color: gray;
+}
+
+/*
+.text-border {
+  border-style: solid;
+  border-width: 2px;
+}*/
+
+.right-div {
+  //右对齐
+  height: 56px;
+  float: right;
+  border-width: 2px;
+  border-style: solid;
+  padding-left:8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 30px;
+}
+.text-rightbot{
+  text-align: center;
+  font-size: 24px;
+}
+
+.gray-line {
+  width: 750px;
+  background-color: lightgray;
+  height: 18px;
+  margin-top: 6px;
+}
