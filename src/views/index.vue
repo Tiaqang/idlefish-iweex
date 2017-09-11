@@ -2,16 +2,17 @@
     <OWTabbar imageType="iconimage" :tabItems="tabItems" @tabBarOnClick="tabBarOnClick"></OWTabbar>
 </template>
 <script>
-  import { OWTabbar } from 'iweex'
+  import {OWTabbar} from 'iweex'
+
   export default {
     components: {
       OWTabbar
     },
-    data() {
+    data () {
       return {
         tabItems: [
           {
-            index: 0,
+            index: '/home',
             label: '首页',
             titleColor: '#000000',
             icon: 'icon-home',
