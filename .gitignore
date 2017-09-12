@@ -2,3 +2,5 @@ node_modules
 dist
 config.js
 *log
+.gitignore
+.idea
