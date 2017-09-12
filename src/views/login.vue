@@ -1,46 +1,131 @@
-<template>
-  <ONavPage
-    title="登录"
-    OHeader>
-    <div class="login">
-      <OLogin component="login-password" :redirect="redirect" ></OLogin>
-      <div class="otherbox">
-        <OH5 @onClick="goReset">忘记密码？</OH5>
-        <OH5 @onClick="goRegister">现在去注册</OH5>
-      </div>
-    </div>
-  </ONavPage>
-</template>
+<!--<template>-->
+    <!--<div class="rcmdcol">-->
+        <!--<div class="rcmdrow">-->
+            <!--<div v-for="item in items1">-->
+                <!--<ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="rcmdrow">-->
+            <!--<div v-for="item in items2">-->
+                <!--<ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-<script>
-  import { ONavPage, OLogin, OH5 } from 'iweex'
+<!--</template>-->
 
-  export default {
-    data () {
-      return {
-        redirect: 'command'
-      }
-    },
-    components: {
-      ONavPage, OLogin, OH5
-    },
-    methods: {
-      goRegister () {
-        this.jump('register')
-      },
-      goReset () {
-        this.jump('reset')
-      }
-    }
-  }
-</script>
-<style lang="sass" scoped>
-.otherbox {
-  justify-content: space-between;
-  flex-direction: row;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-top: 10px;
-}
+<!--<style scoped>-->
+    <!--.rcmdrow{-->
+        <!--flex-direction: row;-->
+    <!--}-->
+    <!--.rcmdcol{-->
+        <!--flex-direction: column;-->
+    <!--}-->
+<!--</style>-->
 
-</style>
+<!--<script>-->
+  <!--import ImageTextcell from './recommend.vue'-->
+
+  <!--export default {-->
+    <!--components: {-->
+      <!--ImageTextcell-->
+    <!--},-->
+    <!--data () {-->
+      <!--return {-->
+        <!--items1: [-->
+          <!--{-->
+            <!--header: '捡漏',-->
+            <!--color: '#4bd9fd',-->
+            <!--array: [-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--},-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--}]-->
+          <!--},-->
+          <!--{-->
+            <!--header: '猎奇',-->
+            <!--color: '#f877fe',-->
+            <!--array: [-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--},-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--}]-->
+          <!--}-->
+        <!--],-->
+        <!--items2: [-->
+          <!--{-->
+            <!--header: '发烧',-->
+            <!--color: '#ffab27',-->
+            <!--array: [-->
+              <!--{-->
+<!--//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--},-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--}]-->
+          <!--},-->
+          <!--{-->
+            <!--header: '过日子',-->
+            <!--color: '#19dab2',-->
+            <!--array: [-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+                <!--label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--},-->
+              <!--{-->
+                <!--src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+                <!--discribe: 'fhsdlkfjlfldsfjldsf'-->
+              <!--}]-->
+          <!--}-->
+        <!--]-->
+<!--//          {-->
+<!--//            header: '猎奇',-->
+<!--//            array: [-->
+<!--//              {-->
+<!--//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+<!--//                discribe: 'fhsdlkfjlfldsfjldsf'-->
+<!--//              },-->
+<!--//              {-->
+<!--//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+<!--//                discribe: 'fhsdlkfjlfldsfjldsf'-->
+<!--//              }]-->
+<!--//          },-->
+<!--//          {-->
+<!--//            header: '猎奇',-->
+<!--//            array: [-->
+<!--//              {-->
+<!--//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+<!--//                discribe: 'fhsdlkfjlfldsfjldsf'-->
+<!--//              },-->
+<!--//              {-->
+<!--//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',-->
+<!--//                label: '复活就死',-->
+<!--//                discribe: 'fhsdlkfjlfldsfjldsf'-->
+<!--//              }]-->
+<!--//          }-->
+<!--//        ]-->
+      <!--}-->
+    <!--}-->
+  <!--}-->
+<!--</script>-->

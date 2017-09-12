@@ -1,0 +1,5 @@
+node_modules
+src/assets
+src/mixins
+src/appWeb.js
+src/appWeex.js

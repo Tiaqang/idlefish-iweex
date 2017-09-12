@@ -7,7 +7,7 @@
     components: {
       OWTabbar
     },
-    data() {
+    data () {
       return {
         tabItems: [
           {
