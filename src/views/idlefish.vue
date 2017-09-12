@@ -102,7 +102,6 @@
             src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999'
           }
         ]
-
       }
     },
     methods: {
