@@ -1,28 +1,29 @@
 <template>
-    <div>
     <div class="Rcmdcolumn">
         <div class="Iheader">
-            <div class="coloricon" :class="colorlist"></div>
-            <text class="header">{{RcmdHeader}}</text>
+            <div class="coloricon" :style="colorlist"></div>
+            <div class="header-div">
+                <text class="header">{{RcmdHeader}}</text>
+            </div>
         </div>
-    </div>
-    <div v-for="item in recommenditems">
-        <recommendItem :Iicon="item.src" :Ilabel="item.label" :Idiscribe="item.discribe"></recommendItem>
-    </div>
+        <div v-for="item in recommenditems">
+            <recommendItem :Iicon="item.src" :Ilabel="item.label" :Idiscribe="item.discribe"></recommendItem>
+        </div>
     </div>
 </template>
 
 <style>
     .Rcmdcolumn {
-        flex-direction: column;
         padding-top: 5px;
         padding-left: 20px;
         padding-bottom: 5px;
         padding-right: 5px;
-        width: 350px;
+        width: 370px;
+        background-color: white
     }
 
     .Iheader {
+        width: 330px;
         border-bottom-width: 1px;
         border-bottom-color: #C8C8CD;
         flex-direction: row;
@@ -33,15 +34,16 @@
     }
 
     .coloricon {
-        height: 52px;
-        width: 9px;
-        /*background-color: #4bd9fd;*/
-        margin-right: 5px;
+        height: 35px;
+        width: 10px;
     }
 
     .header {
-        font-weight: 600;
-        font-size: 48px;
+        font-size: 32px;
+        font-weight: 700;
+    }
+    .header-div{
+        margin-left: 20px;
     }
 </style>
 
@@ -62,14 +64,9 @@
         default: '#4bd9fd'
       }
     },
-//    data () {
-//      return {
-//
-//      }
-//    },
     computed: {
       colorlist () {
-//        this.backgroundcolor = IconColor
+        return {'background-color': this.IconColor}
       }
     }
   }

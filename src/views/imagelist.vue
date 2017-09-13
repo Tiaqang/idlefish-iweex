@@ -25,8 +25,8 @@
         margin-top: 20px;
     }
     .text{
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 32px;
+        font-weight: 700;
     }
 </style>
 

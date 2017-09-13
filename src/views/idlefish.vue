@@ -1,76 +1,85 @@
 <template>
-    <div class="div">
-        <OHeader bgcolor="#FFD700">
+    <ONavPage pageWrapperColor="#F3F5F9">
+        <OHeader bgcolor="#FFD700" class="div-header">
             <OIcon slot="left" type="icon-scan_light"></OIcon>
             <div slot="center" class="header-button" @click="search">
-                <OIcon type="icon-search_light" color="#A9A9A9" class="header-button_icon"></OIcon>
+                <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
                 <text class="header-button_text">连衣裙</text>
             </div>
             <OIcon slot="right" type="icon-sortlight"></OIcon>
         </OHeader>
+
         <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
         <ImageList :images="images" class="top"></ImageList>
 
-        <div class="Idlecolumn">
-            <!--<ONavPage backgroundColor="#00ff00">-->
-            <div class="rcmdcol">
-                <div class="rcmdrow">
-                    <div v-for="item in items1">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
-                    </div>
-                </div>
-                <div class="rcmdrow">
-                    <div v-for="item in items2">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
-                    </div>
-                </div>
+        <div class="rcmdrow">
+            <div v-for="item in items1">
+                <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
+                               :recommenditems="item.array"></ImageTextcell>
             </div>
-            <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000" activecolor="#64D7D6">
-                <OTab label="新鲜的" value="one">
-                    <div v-for="item in Iitems">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-                <OTab label="附近的" value="two">
-                    <div v-for="item in Iitems">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-            </OTabs>
-            <!--</ONavPage>-->
         </div>
-    </div>
+        <div class="rcmdrow">
+            <div v-for="item in items2">
+                <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
+                               :recommenditems="item.array"></ImageTextcell>
+            </div>
+        </div>
+
+        <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000"
+               activecolor="#64D7D6">
+            <OTab label="新鲜的" value="one">
+                <div v-for="item in Iitems">
+                    <IdleRcmdItem
+                            :price="item.price"
+                            :username="item.name"
+                            :Idletime="item.time"
+                            :timeicon="item.icon"
+                            :user_avatar="item.avatar"
+                            :discribe="item.discribe"
+                            :IdleAddress="item.address"
+                            :IdleLabel="item.Label"
+                            :likesCount="item.count"
+                            :leaveWord="item.word">
+                    </IdleRcmdItem>
+                </div>
+            </OTab>
+            <OTab label="附近的" value="two">
+                <div v-for="item in Iitems">
+                    <IdleRcmdItem
+                            :price="item.price"
+                            :username="item.name"
+                            :Idletime="item.time"
+                            :timeicon="item.icon"
+                            :user_avatar="item.avatar"
+                            :discribe="item.discribe"
+                            :IdleAddress="item.address"
+                            :IdleLabel="item.Label"
+                            :likesCount="item.count"
+                            :leaveWord="item.word">
+                    </IdleRcmdItem>
+                </div>
+            </OTab>
+        </OTabs>
+    </ONavPage>
+
 </template>
 
-<style>
+<style scoped>
     .top {
-        margin-top: 30px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .div-header {
+        width: 750px;
+        position: fixed;
+        top: 0px;
     }
 
     .header-button_text {
         color: darkgray;
+        font-size: 26px;
+        margin-left: 10px;
     }
 
     .header-button_icon {
@@ -89,27 +98,14 @@
         justify-content: center;
     }
 
-    .textbutton {
-        background-color: white;
+    .rcmdrow {
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
-    .div {
-        width: 750px;
-        background-color: #F5F5F9;
-    }
-    .rcmdrow{
-        flex-direction: row;
-    }
-    .rcmdcol{
-        flex-direction: column;
-    }
-    .Idlecolumn {
-        flex-direction: column;
-        width: 750px;
-    }
-    .tabs{
-        margin-top: 10px;
-        margin-bottom: 10px;
+    .tabs {
+        margin-top: 20px;
     }
 </style>
 
@@ -123,16 +119,22 @@
 
   export default {
     components: {
-      OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn, ImageList, ONavPage, OTabs, OTab, IdleRcmdItem, ImageTextcell
+      OButton,
+      OHeader,
+      OIcon,
+      OSearchBar,
+      OH3,
+      OSwiper,
+      OButtonTextBtn,
+      ImageList,
+      ONavPage,
+      OTabs,
+      OTab,
+      IdleRcmdItem,
+      ImageTextcell
     },
     data () {
       return {
-        items: [
-          {value: 1, main: '闲鱼精选', second: '这里有好东西', hasInfo: false},
-          {value: 2, main: '拍卖', second: '变形金刚5', hasInfo: false},
-          {value: 3, main: '同城', second: '选闲置更靠谱', hasInfo: false},
-          {value: 4, main: '我要租房', second: '三分钟租到房', hasInfo: false}
-        ],
         imagelists: [
           {
             src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999',
@@ -182,7 +184,7 @@
             address: '南充',
             Label: '摩托moto',
             count: '2',
-            word: '5'
+            word: '4'
           },
           {
             price: '55000',
@@ -204,13 +206,13 @@
             array: [
               {
                 src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
+                label: '七折转手',
+                discribe: '超近期买入'
               },
               {
                 src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
+                label: '仅此一件',
+                discribe: '不看后悔系列'
               }]
           },
           {
@@ -219,12 +221,12 @@
             array: [
               {
                 src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
+                label: '闲鱼拍卖',
                 discribe: 'fhsdlkfjlfldsfjldsf'
               },
               {
                 src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
+                label: '明星福利',
                 discribe: 'fhsdlkfjlfldsfjldsf'
               }]
           }
@@ -236,7 +238,7 @@
             array: [
               {
 //                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
+                label: 'ACG',
                 discribe: 'fhsdlkfjlfldsfjldsf'
               },
               {

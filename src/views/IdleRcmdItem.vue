@@ -4,7 +4,7 @@
             <image :src="user_avatar" class="Idleavatar"></image>
             <div class="infoname">
                 <text class="username">{{username}}</text>
-                <div class="Idlerow">
+                <div class="imagetext-row">
                     <image :src="timeicon" class="timeicon"></image>
                     <text class="time">{{Itime}}</text>
                 </div>
@@ -20,36 +20,48 @@
         <div class="Idlerow">
             <text class="IdleAddress">{{IAddress}}</text>
             <text class="IdleLabel">{{ILabel}}</text>
-            <text class="likes" :class="likesable">{{likes}}</text>
-            <text class="likes" :class="leaveable">{{IleaveWord}}</text>
+            <div v-if="islike" class="likes" >
+                <text :class="likeable" class="like-text">{{likeOrleave}}</text>
+            </div>
+            <div class="likes"v-else>
+                <text class="like-text">{{likes}}</text>
+                <div class="like-point"></div>
+                <text class="like-text">{{IleaveWord}}</text>
+            </div>
         </div>
     </div>
 </template>
 
-<style>
+<style scoped>
     .Idlecolumn {
         flex-direction: column;
-        /*margin-left: 10px;*/
-        /*margin-right: 10px;*/
-        margin: 13px;
         width: 750px;
+        background-color: white;
+        margin-bottom: 20px;
     }
 
     .Idlerow {
+        margin-top: 20px;
+        margin-left: 20px;
+        padding-bottom: 20px;
         flex-direction: row;
         align-items: center;
         width: 750px;
+    }
+    .imagetext-row{
+        flex-direction: row;
+        margin-top: 10px;
+        align-items: center;
     }
 
     .infoname {
         flex-direction: column;
         width: 400px;
-        margin-left: 16px;
+        margin-left: 20px;
     }
 
     .username {
-        /*font-family: "Cooper Black";*/
-        font-size: 36px;
+        font-size: 32px;
         font-weight: bold;
     }
 
@@ -60,24 +72,20 @@
     }
 
     .timeicon {
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
-        margin-left: 5px;
+        width: 18px;
+        height: 18px;
     }
 
     .price {
         color: red;
-        /*margin-right: 20px;*/
         font-size: 45px;
-        font-weight: bold;
+        font-weight: 300;
     }
 
     .time {
-        font-size: 30px;
-        /*font-family: "Fira Code Light";*/
+        margin-left: 10px;
+        font-size: 24px;
         color: #C8C8CD;
-
     }
 
     .goods {
@@ -88,16 +96,16 @@
 
     .photos {
         flex-direction: row;
-        margin-top: 10px;
+        margin-left: 20px;
         margin-bottom: 10px;
-        margin-left: 5px;
         margin-right: 5px;
     }
 
     .discribe {
         width: 750px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 20px;
+        margin-left: 20px;
+        padding-bottom: 20px;
         border-bottom-color: #C8C8CD;
         border-bottom-style: solid;
         border-bottom-width: 1px;
@@ -105,26 +113,40 @@
 
     .discribeText {
         lines: 2;
-        font-size: 36px;
-        font-family: SimHei;
+        font-size: 28px;
+        font-family: "PingFang SC";
     }
 
     .IdleAddress {
-        font-size: 30px;
+        flex: 1;
+        font-size: 24px;
         color: #7dc5eb;
-        width: 20%;
     }
 
     .IdleLabel {
-        width: 50%;
-        font-size: 30px;
+        flex: 2;
+        font-size: 24px;
         color: #7dc5eb;
     }
 
     .likes {
-        width: 15%;
-        font-size: 30px;
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
+        text-align: right;
+    }
+    .like-text{
+        font-size: 24px;
         color: #888888;
+        text-align: right;
+    }
+    .like-point{
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background-color: #888888;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 </style>
 
@@ -171,20 +193,25 @@
         IAddress: '来自' + this.IdleAddress,
         ILabel: '鱼塘|' + this.IdleLabel,
         likes: '点赞' + this.likesCount,
-        IleaveWord: '留言' + this.leaveWord
+        IleaveWord: '留言' + this.leaveWord,
+        likeOrleave: '',
+        islike: false
       }
     },
+    created () {
+      this.islike = this.likesCount === '0' || this.leaveWord === '0'
+    },
     computed: {
-      likesable () {
-        if (this.likesCount === 0) {
-          this.likes = ''
+      likeable () {
+        if (this.likesCount !== '0') {
+          this.likeOrleave = this.likes
         }
-      },
-      leaveable () {
-        if (this.leaveWord === 0) {
-          this.IleaveWord = ''
+        if (this.leaveWord !== '0') {
+          this.likeOrleave = this.IleaveWord
         }
       }
+    },
+    methods: {
     }
   }
 </script>
