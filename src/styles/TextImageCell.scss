@@ -1,0 +1,30 @@
+.wrapper{
+  width: 530px;
+  padding:28px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  margin: 20px;
+}
+
+.text-top {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.text-medium {
+  font-size: 26px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.img-div{
+  width: 468px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.img{
+  width: 152px;
+  height: 152px;
+}

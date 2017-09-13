@@ -1,32 +1,41 @@
 .cell {
-  width: 740px;
-  margin-left: 5px;
+  width: 750px;
+  padding-top: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 14px;
+  border-bottom-color: lightgray;
+  padding-left: 5px;
 }
 
 .row {
-  width: 740px;
+  width: 750px;
   flex-direction: row;
   margin-top: 5px;
 }
 
+.imgdiv {
+  width: 750px;
+  padding-top: 10px;
+}
 .img1 {
-  width: 730px;
+  width: 740px;
   height: 340px;
 }
 
 .img2 {
-  width: 356px;
+  width: 360px;
   height: 320px;
   margin-right: 10px;
 }
 
 .img3 {
-  width: 240px;
+  width: 243px;
   height: 240px;
   margin-right: 7px;
 }
 
 .desc-row {
+  margin: 5px;
   width: 740px;
 }
 
@@ -39,22 +48,8 @@
   color: red;
   font-size: 28px;
   font-weight: bold;
+  margin-left: 4px;
 }
-
-/*.praise-div {
-  position: absolute;
-  right: 2px;
-}
-
-.text2 {
-  font-size: 24px;
-  color: gray;
-}
-
-.message-div {
-  position: absolute;
-  right: 2px;
-}*/
 
 .text-right {
   text-align: right;
@@ -97,12 +92,6 @@
   color: gray;
 }
 
-/*
-.text-border {
-  border-style: solid;
-  border-width: 2px;
-}*/
-
 .right-div {
   //右对齐
   height: 56px;
@@ -113,7 +102,6 @@
   padding-right: 8px;
   padding-bottom: 8px;
   padding-top: 8px;
-
   margin: auto;
   position: absolute;
   top: 0;

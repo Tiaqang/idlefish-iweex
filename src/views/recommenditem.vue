@@ -1,50 +1,46 @@
 <template>
     <div class="Iitem">
-        <div class="ItemRow">
-            <image :src="Iicon" class="itemicon"></image>
-            <div class="TextItem">
-                <text class="ILable">{{Ilabel}}</text>
-                <text class="Idiscribe">{{Idiscribe}}</text>
-            </div>
+        <image :src="Iicon" class="itemicon"></image>
+        <div class="TextItem">
+            <text class="ILable">{{Ilabel}}</text>
+            <text class="Idiscribe">{{Idiscribe}}</text>
         </div>
     </div>
 
 </template>
 
 <style>
-    .ItemRow {
-        flex-direction: row;
-    }
-
     .Iitem {
+        flex-direction: row;
         margin-top: 15px;
         margin-bottom: 15px;
-        margin-left: 10px;
         margin-right: 10px;
         align-items: start;
+        width: 340px;
     }
 
     .itemicon {
-        width: 125px;
-        height: 125px;
+        width: 110px;
+        height: 110px;
         background-color: white;
     }
 
     .TextItem {
+        height:80px;
+        margin-top: 20px;
         flex-direction: column;
         margin-left: 20px;
-
     }
 
     .ILable {
-        font-weight: bold;
-        font-size: 40px;
-        margin-top: 10px;
+        flex: 1.5;
+        font-size: 30px;
+        font-weight: 700;
     }
 
     .Idiscribe {
+        flex: 1;
         font-size: 26px;
-        margin-top: 10px;
         color: #ababab;
     }
 </style>
