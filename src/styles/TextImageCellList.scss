@@ -1,0 +1,26 @@
+.wrapper {
+  padding-top: 30px;
+  padding-bottom:30px;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 10px;
+}
+
+.text {
+  flex-direction: row;
+}
+
+.text-left {
+  font-size: 32px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.text-right {
+  font-size: 24px;
+  color: #0088fb;
+  position: absolute;
+  right: 20px;
+  height:34px;
+  line-height: 34px;
+}

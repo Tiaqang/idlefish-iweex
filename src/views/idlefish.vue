@@ -61,7 +61,6 @@
             </OTab>
         </OTabs>
     </ONavPage>
-
 </template>
 
 <style scoped>
@@ -97,7 +96,6 @@
         align-items: center;
         justify-content: center;
     }
-
     .rcmdrow {
         margin-top: 10px;
         flex-direction: row;
@@ -105,12 +103,15 @@
     }
 
     .tabs {
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 750px;
+
     }
 </style>
 
 <script>
-  import { ONavPage, OTabs, OTab, OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn } from 'iweex'
+  import {ONavPage, OTabs, OTab, OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn} from 'iweex'
   import ImageList from './imagelist.vue'
   import IdleRcmdItem from './IdleRcmdItem.vue'
   import ImageTextcell from './recommend.vue'
@@ -263,6 +264,7 @@
               }]
           }
         ]
+
       }
     },
     computed: {
