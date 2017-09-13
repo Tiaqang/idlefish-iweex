@@ -1,0 +1,50 @@
+.f-cell {
+  flex-direction: row;
+  padding: 16px;
+  border-bottom-width: 1px;
+  border-bottom-color: lightgray;
+  border-bottom-style: solid;
+}
+
+.f-image_main {
+  margin-left: 5px;
+  //margin-top: 10px;
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  overflow: hidden;
+}
+
+.f-textdiv {
+  margin-left:15px;
+}
+
+.f-text_top {
+  margin: 10px;
+  font-size: 32px;
+}
+
+.f-text_medium {
+  color: gray;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.f-text_bottom {
+  color: gray;
+  margin:10px;
+  font-size: 30px;
+}
+
+.f-imgdiv_right {
+  position: absolute;
+  right: 14px;
+  margin-top: 14px;
+  width: 100px;
+  height: 100px;
+}
+
+.f-image_right {
+  width: 80px;
+  height: 80px;
+}

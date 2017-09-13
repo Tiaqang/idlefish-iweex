@@ -1,72 +1,83 @@
 <template>
-    <div class="div">
-        <OHeader bgcolor="#FFD700">
-            <OIcon slot="left" type="icon-scan_light"></OIcon>
-            <div slot="center" class="header-button" @click="search">
-                <OIcon type="icon-search_light" color="#A9A9A9" class="header-button_icon"></OIcon>
-                <text class="header-button_text">连衣裙</text>
-            </div>
-            <OIcon slot="right" type="icon-sortlight"></OIcon>
-        </OHeader>
-        <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
-        <ImageList :images="images" class="top"></ImageList>
+    <ONavPage
+            title="IdleFish"
+            navbarhide="hide">
+        <div class="div">
+            <OHeader bgcolor="#FFD700" class="header">
+                <OIcon slot="left" type="icon-scan_light"></OIcon>
+                <div slot="center" class="header-button" @click="search">
+                    <OIcon type="icon-search_light" color="#A9A9A9" class="header-button_icon"></OIcon>
+                    <text class="header-button_text">连衣裙</text>
+                </div>
+                <OIcon slot="right" type="icon-sortlight"></OIcon>
+            </OHeader>
+            <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
+            <ImageList :images="images" class="top"></ImageList>
 
-        <div class="Idlecolumn">
-            <!--<ONavPage backgroundColor="#00ff00">-->
-            <div class="rcmdcol">
-                <div class="rcmdrow">
-                    <div v-for="item in items1">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
+            <div class="Idlecolumn">
+                <!--<ONavPage backgroundColor="#00ff00">-->
+                <div class="rcmdcol">
+                    <div class="rcmdrow">
+                        <div v-for="item in items1">
+                            <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color"
+                                           :recommenditems="item.array"></ImageTextcell>
+                        </div>
+                    </div>
+                    <div class="rcmdrow">
+                        <div v-for="item in items2">
+                            <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color"
+                                           :recommenditems="item.array"></ImageTextcell>
+                        </div>
                     </div>
                 </div>
-                <div class="rcmdrow">
-                    <div v-for="item in items2">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
-                    </div>
-                </div>
+                <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000"
+                       activecolor="#64D7D6">
+                    <OTab label="新鲜的" value="one">
+                        <div v-for="item in Iitems">
+                            <IdleRcmdItem
+                                    :price="item.price"
+                                    :username="item.name"
+                                    :Idletime="item.time"
+                                    :timeicon="item.icon"
+                                    :user_avatar="item.avatar"
+                                    :discribe="item.discribe"
+                                    :IdleAddress="item.address"
+                                    :IdleLabel="item.Label"
+                                    :likesCount="item.count"
+                                    :leaveWord="item.word">
+                            </IdleRcmdItem>
+                        </div>
+                    </OTab>
+                    <OTab label="附近的" value="two">
+                        <div v-for="item in Iitems">
+                            <IdleRcmdItem
+                                    :price="item.price"
+                                    :username="item.name"
+                                    :Idletime="item.time"
+                                    :timeicon="item.icon"
+                                    :user_avatar="item.avatar"
+                                    :discribe="item.discribe"
+                                    :IdleAddress="item.address"
+                                    :IdleLabel="item.Label"
+                                    :likesCount="item.count"
+                                    :leaveWord="item.word">
+                            </IdleRcmdItem>
+                        </div>
+                    </OTab>
+                </OTabs>
+
             </div>
-            <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000" activecolor="#64D7D6">
-                <OTab label="新鲜的" value="one">
-                    <div v-for="item in Iitems">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-                <OTab label="附近的" value="two">
-                    <div v-for="item in Iitems">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-            </OTabs>
-            <!--</ONavPage>-->
         </div>
-    </div>
+    </ONavPage>
 </template>
 
-<style>
+<style scoped>
     .top {
         margin-top: 30px;
+    }
+    .header {
+        position: fixed;
+        width: 750px;
     }
 
     .header-button_text {
@@ -97,24 +108,29 @@
         width: 750px;
         background-color: #F5F5F9;
     }
-    .rcmdrow{
+
+    .rcmdrow {
         flex-direction: row;
     }
-    .rcmdcol{
+
+    .rcmdcol {
         flex-direction: column;
     }
+
     .Idlecolumn {
         flex-direction: column;
         width: 750px;
     }
-    .tabs{
+
+    .tabs {
         margin-top: 10px;
         margin-bottom: 10px;
+        width: 750px;
     }
 </style>
 
 <script>
-  import { ONavPage, OTabs, OTab, OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn } from 'iweex'
+  import {ONavPage, OTabs, OTab, OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn} from 'iweex'
   import ImageList from './imagelist.vue'
   import IdleRcmdItem from './IdleRcmdItem.vue'
   import ImageTextcell from './recommend.vue'
@@ -123,7 +139,19 @@
 
   export default {
     components: {
-      OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn, ImageList, ONavPage, OTabs, OTab, IdleRcmdItem, ImageTextcell
+      OButton,
+      OHeader,
+      OIcon,
+      OSearchBar,
+      OH3,
+      OSwiper,
+      OButtonTextBtn,
+      ImageList,
+      ONavPage,
+      OTabs,
+      OTab,
+      IdleRcmdItem,
+      ImageTextcell
     },
     data () {
       return {
