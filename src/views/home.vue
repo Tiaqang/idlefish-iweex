@@ -1,201 +1,174 @@
 <template>
-<!--<<<<<<< HEAD
-    <div class="Idlecolumn">
-        &lt;!&ndash;<ONavPage backgroundColor="#00ff00">&ndash;&gt;
-            <div class="rcmdcol">
-                <div class="rcmdrow">
-                    <div v-for="item in items1">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
-                    </div>
-                </div>
-                <div class="rcmdrow">
-                    <div v-for="item in items2">
-                        <ImageTextcell :RcmdHeader="item.header" :Iconcolor="item.color" :recommenditems="item.array"></ImageTextcell>
-                    </div>
-                </div>
+    <ONavPage navbarhide="hide" pageWrapperColor="#F3F5F9">
+        <div style="margin-bottom: 11px">
+            <image class="Myheader" src="http://s10.sinaimg.cn/middle/5a3ab1b1x9961016a8699&690" resize="cover"></image>
+            <div class="title">
+                <text class="welText">欢迎来到闲鱼</text>
+                <OButton class="button-item" size="small" iconcolor="#e9c841" >马上登录</OButton>
             </div>
-            <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000" activecolor="#64D7D6">
-                <OTab label="新鲜的" value="one">
-                    <div v-for="item in items">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-                <OTab label="附近的" value="two">
-                    <div v-for="item in items">
-                        <IdleRcmdItem
-                                :price="item.price"
-                                :username="item.name"
-                                :Idletime="item.time"
-                                :timeicon="item.icon"
-                                :user_avatar="item.avatar"
-                                :discribe="item.discribe"
-                                :IdleAddress="item.address"
-                                :IdleLabel="item.Label"
-                                :likesCount="item.count"
-                                :leaveWord="item.word">
-                        </IdleRcmdItem>
-                    </div>
-                </OTab>
-            </OTabs>
-        &lt;!&ndash;</ONavPage>&ndash;&gt;
-    </div>
+        </div>
+        <div class="mydiv">
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我发布的"
+                    showArrow
+                    :value="fabuCount"
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我卖出的"
+                    showArrow
+                    :value="soldCount"
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我买到的"
+                    showArrow
+                    :value= "buyCount"
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我收藏的"
+                    showArrow
+                    :value= "collectCount"
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我的拍卖"
+                    showArrow
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="我的鱼贝"
+                    showArrow
+                    :value= "yubeiCount"
+                    @Click="Click">
+            </OCell>
+        </div>
+        <div class="specialDiv">
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="闲鱼Family"
+                    showArrow
+                    @Click="Click">
+            </OCell>
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="闲鱼服务社"
+                    showArrow
+                    @Click="Click">
+            </OCell>
+        </div>
+        <div class="mydiv">
+            <OCell
+                    dataRole="none"
+                    :height="CellHeight"
+                    Src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII="
+                    Title="设置"
+                    showArrow
+                    @Click="Click">
+            </OCell>
+        </div>
+    </OnavPage>
 </template>
 
 <style scoped>
-    .rcmdrow{
-        flex-direction: row;
-    }
-    .rcmdcol{
-        flex-direction: column;
-    }
-    .Idlecolumn {
-        flex-direction: column;
+    .Myheader{
         width: 750px;
+        height: 290px;
     }
-    .tabs{
-        margin-top: 10px;
-        margin-bottom: 10px;
+    .title{
+        position:absolute;
+        top: 70px;
+        left: 60px;
+        flex-direction: column;
+    }
+    .welText{
+        color: black;
+        font-size: 42px;
+        font-family: SimHei;
+        font-weight: 300;
+        margin-bottom: 20px;
+    }
+    .button-item{
+        width: 200px;
+        padding-right: 10px;
+        padding-left: 10px;
+        /*margin-right: 60px;*/
+        border-radius: 0px;
+        background-color: #e9c841;
+        font-size: 30px;
+    }
+    .mydiv{
+        flex-direction: column;
+        margin-top: 11px;
+        margin-bottom: 11px;
+        background-color: white;
+    }
+    .specialDiv{
+        flex-direction: column;
+        margin-top: 11px;
+        margin-bottom: 11px;
+        background-color: white;
     }
 </style>
 
 <script>
-  import { ONavPage, OTabs, OTab } from 'iweex'
-  import IdleRcmdItem from './IdleRcmdItem.vue'
-  import ImageTextcell from './recommend.vue'
+    import { OButton, ONavPage, OCell } from 'iweex'
 
-  export default {
-    components: {
-      ONavPage, OTabs, OTab, IdleRcmdItem, ImageTextcell
-    },
-    props: {
-    },
-    data () {
-      return {
-        tab2: 'one1',
-        tabIndex2: '0',
-        items: [
-          {
-            price: '800',
-            name: 'romalazio',
-            time: '2小时',
-            icon: 'http://pic1.16pic.com/00/13/31/16pic_1331067_b.jpg',
-            avatar: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
-            discribe: '我美吗？',
-            address: '南充',
-            Label: '摩托moto',
-            count: '2',
-            word: '5'
-          },
-          {
-            price: '55000',
-            name: 'xiexiaoxi888',
-            time: '2小时',
-            icon: 'http://pic1.16pic.com/00/13/31/16pic_1331067_b.jpg',
-            avatar: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
-            discribe: '我美吗？',
-            address: '南充',
-            Label: '摩托moto',
-            count: '0',
-            word: '0'
-          }
-        ],
-        items1: [
-          {
-            header: '捡漏',
-            color: '#4bd9fd',
-            array: [
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              },
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              }]
-          },
-          {
-            header: '猎奇',
-            color: '#f877fe',
-            array: [
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              },
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              }]
-          }
-        ],
-        items2: [
-          {
-            header: '发烧',
-            color: '#ffab27',
-            array: [
-              {
-//                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              },
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-//                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              }]
-          },
-          {
-            header: '过日子',
-            color: '#19dab2',
-            array: [
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              },
-              {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
-//                label: '复活就死',
-                discribe: 'fhsdlkfjlfldsfjldsf'
-              }]
-          }
-        ]
-      }
-    },
-    computed: {
-      likesable () {
-        if (this.likesCount === 0) {
-          this.likes = ''
+    export default {
+      components: {
+        OButton, ONavPage, OCell
+      },
+      computed: {
+      },
+      props: {
+        fabuCount: {
+          default: ''
+        },
+        soldCount: {
+          default: ''
+        },
+        buyCount: {
+          default: ''
+        },
+        yubeiCount: {
+          default: ''
+        },
+        collectCount: {
+          default: ''
         }
       },
-      leaveable () {
-        if (this.leaveWord === 0) {
-          this.IleaveWord = ''
+      methods: {
+        Click: function (e) {
+          this.$emit('Click', e)
         }
       }
-    },
-    methods: {
-      tabsChange2 (index, tabs) {
-        this.tab2 = tabs[index].value
-        this.tabIndex2 = index
-      }
+//      data () {
+//        return {
+//        }
+//      }
     }
-  }
-</script>
-=======-->
 
-</template>
+</script>
