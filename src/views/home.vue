@@ -1,7 +1,7 @@
 <template>
     <ONavPage navbarhide="hide" pageWrapperColor="#F3F5F9">
         <div style="margin-bottom: 11px">
-            <image class="Myheader" src="http://s10.sinaimg.cn/middle/5a3ab1b1x9961016a8699&690" resize="cover"></image>
+            <image class="Myheader" src="http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/fishbackground.PNG"></image>
             <div class="title">
                 <text class="welText">欢迎来到闲鱼</text>
                 <OButton class="button-item" size="small" iconcolor="#e9c841" >马上登录</OButton>
