@@ -6,12 +6,12 @@
                 router
                 :tabbarItems="tabItems">
         </OTabbar>
-        <div class="publish-out">
-            <div class="publish" @click="publish">
+        <div class="publish-out" @click="publish()">
+            <div class="publish">
                 <OIcon type="icon-add"></OIcon>
             </div>
         </div>
-        <OMask :show="maskshow" @onClick="maskClick"></OMask>
+        <OMask :show="maskshow" :nogrey=true @onClick="maskClick"></OMask>
     </div>
 </template>
 
