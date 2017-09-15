@@ -4,6 +4,8 @@ import fishpond from '../views/fishpond.vue'
 import publish from '../views/publish.vue'
 import message from '../views/message.vue'
 import home from '../views/home.vue'
+import login from '../views/login.vue'
+import userinfo from '../views/userinfo.vue'
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
         component: home
       }
     ]
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: login
+  },
+  {
+    name: 'userinfo',
+    path: '/userinfo',
+    component: userinfo
   }
 ]
 

@@ -184,7 +184,7 @@
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
-            count: '2',
+            count: '0',
             word: '4'
           },
           {
@@ -196,7 +196,7 @@
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
-            count: '0',
+            count: '3',
             word: '0'
           }
         ],
