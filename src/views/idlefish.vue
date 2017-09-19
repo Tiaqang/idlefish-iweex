@@ -79,7 +79,7 @@
 
   .div-header {
     width: 750px;
-    height: 50px;
+    height: 95px;
     position: fixed;
     top: 0px;
   }
@@ -220,7 +220,7 @@
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
-            count: '2',
+            count: '0',
             word: '4'
           },
           {
@@ -236,7 +236,7 @@
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
-            count: '0',
+            count: '3',
             word: '0'
           }
         ],
