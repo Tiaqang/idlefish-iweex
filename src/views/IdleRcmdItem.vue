@@ -12,7 +12,8 @@
             <text class="price">{{Iprice}}</text>
         </div>
         <div class="photos">
-            <image :src="user_avatar" class="goods" resize="cover"></image>
+            <image :src="imageSrc[0]" class="goods" resize="cover" v-if="isOnePhoto"></image>
+            <ImageList :imageSrc="imageSrc" v-else></ImageList>
         </div>
         <div class="discribe">
             <text class="discribeText" lines="2">{{discribe}}</text>
@@ -23,7 +24,7 @@
             <div v-if="islike" class="likes" >
                 <text :class="likeable" class="like-text">{{likeOrleave}}</text>
             </div>
-            <div class="likes"v-else>
+            <div class="likes" v-else>
                 <text class="like-text">{{likes}}</text>
                 <div class="like-point"></div>
                 <text class="like-text">{{IleaveWord}}</text>
@@ -89,13 +90,12 @@
     }
 
     .goods {
-        width: 530px;
-        height: 530px;
+        width: 400px;
+        height: 400px;
         border-style: solid;
     }
 
     .photos {
-        flex-direction: row;
         margin-left: 20px;
         margin-bottom: 10px;
         margin-right: 5px;
@@ -151,8 +151,9 @@
 </style>
 
 <script>
+  import ImageList from '../components/Imagelist.vue'
   export default {
-    components: {},
+    components: { ImageList },
     props: {
       price: {
         default: 0.00
@@ -183,6 +184,9 @@
       },
       leaveWord: {
         default: 0
+      },
+      imageSrc: {
+        default: []
       }
 
     },
@@ -195,11 +199,13 @@
         likes: '点赞' + this.likesCount,
         IleaveWord: '留言' + this.leaveWord,
         likeOrleave: '',
-        islike: false
+        islike: false,
+        isOnePhoto: true
       }
     },
     created () {
       this.islike = this.likesCount === '0' || this.leaveWord === '0'
+      this.isOnePhoto = this.imageSrc.length === 1
     },
     computed: {
       likeable () {

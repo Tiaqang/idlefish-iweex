@@ -1,8 +1,8 @@
 <template>
+  <div>
     <ONavPage
-            title="FishPond"
+            title="Message"
             navbarhide="hide">
-
         <div class="f-title_div">
             <text class="f-title">消息</text>
         </div>
@@ -24,6 +24,7 @@
             </div>
         </div>
     </ONavPage>
+  </div>
 </template>
 
 <script>

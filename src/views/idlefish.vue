@@ -1,125 +1,158 @@
 <template>
+  <div>
     <ONavPage pageWrapperColor="#F3F5F9">
-        <OHeader bgcolor="#FFD700" class="div-header">
-            <OIcon slot="left" type="icon-scan_light"></OIcon>
-            <div slot="center" class="header-button" @click="search">
-                <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
-                <text class="header-button_text">连衣裙</text>
-            </div>
-            <OIcon slot="right" type="icon-sortlight"></OIcon>
-        </OHeader>
-
-        <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
-        <ImageList :images="images" class="top"></ImageList>
-
-        <div class="rcmdrow">
-            <div v-for="item in items1">
-                <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
-                               :recommenditems="item.array"></ImageTextcell>
-            </div>
+      <OHeader bgcolor="#FFD700" class="div-header">
+        <OIcon slot="left" type="icon-scan_light"></OIcon>
+        <div slot="center" class="header-button" @click="search">
+          <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
+          <text class="header-button_text">连衣裙</text>
         </div>
-        <div class="rcmdrow">
-            <div v-for="item in items2">
-                <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
-                               :recommenditems="item.array"></ImageTextcell>
-            </div>
-        </div>
+        <OIcon slot="right" type="icon-sortlight"></OIcon>
+      </OHeader>
+      <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
+          <OLoadingMore>臣妾正在努力加载哟...</OLoadingMore>
+      </refresh>-->
 
-        <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000"
-               activecolor="#64D7D6">
-            <OTab label="新鲜的" value="one">
-                <div v-for="item in Iitems">
-                    <IdleRcmdItem
-                            :price="item.price"
-                            :username="item.name"
-                            :Idletime="item.time"
-                            :timeicon="item.icon"
-                            :user_avatar="item.avatar"
-                            :discribe="item.discribe"
-                            :IdleAddress="item.address"
-                            :IdleLabel="item.Label"
-                            :likesCount="item.count"
-                            :leaveWord="item.word">
-                    </IdleRcmdItem>
-                </div>
-            </OTab>
-            <OTab label="附近的" value="two">
-                <div v-for="item in Iitems">
-                    <IdleRcmdItem
-                            :price="item.price"
-                            :username="item.name"
-                            :Idletime="item.time"
-                            :timeicon="item.icon"
-                            :user_avatar="item.avatar"
-                            :discribe="item.discribe"
-                            :IdleAddress="item.address"
-                            :IdleLabel="item.Label"
-                            :likesCount="item.count"
-                            :leaveWord="item.word">
-                    </IdleRcmdItem>
-                </div>
-            </OTab>
-        </OTabs>
+      <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
+      <ImageTextGroup :images="images" class="top"></ImageTextGroup>
+
+      <div class="rcmdrow">
+        <div v-for="item in items1">
+          <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
+                         :recommenditems="item.array"></ImageTextcell>
+        </div>
+      </div>
+      <div class="rcmdrow">
+        <div v-for="item in items2">
+          <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
+                         :recommenditems="item.array"></ImageTextcell>
+        </div>
+      </div>
+
+      <OTabs :value="tab2" @input="tabsChange2" :tabIndex="tabIndex2" class="tabs" defaultcolor="#000"
+             activecolor="#FFD700">
+        <OTab label="新鲜的" value="one">
+          <div v-for="item in Iitems">
+            <IdleRcmdItem
+              :price="item.price"
+              :username="item.name"
+              :Idletime="item.time"
+              :timeicon="item.icon"
+              :user_avatar="item.avatar"
+              :discribe="item.discribe"
+              :IdleAddress="item.address"
+              :IdleLabel="item.Label"
+              :likesCount="item.count"
+              :leaveWord="item.word"
+              :imageSrc="item.imageSrc">
+            </IdleRcmdItem>
+          </div>
+        </OTab>
+        <OTab label="附近的" value="two">
+          <div v-for="item in Iitems">
+            <IdleRcmdItem
+              :price="item.price"
+              :username="item.name"
+              :Idletime="item.time"
+              :timeicon="item.icon"
+              :user_avatar="item.avatar"
+              :discribe="item.discribe"
+              :IdleAddress="item.address"
+              :IdleLabel="item.Label"
+              :likesCount="item.count"
+              :imageSrc="item.imageSrc"
+              :leaveWord="item.word">
+            </IdleRcmdItem>
+          </div>
+        </OTab>
+      </OTabs>
+
     </ONavPage>
+  </div>
 </template>
 
 <style scoped>
-    .top {
-        padding-bottom: 20px;
-        padding-top: 20px;
-    }
+  .top {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
 
-    .div-header {
-        width: 750px;
-        position: fixed;
-        top: 0px;
-    }
+  .div-header {
+    width: 750px;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+  }
 
-    .header-button_text {
-        color: darkgray;
-        font-size: 26px;
-        margin-left: 10px;
-    }
+  .header-button_text {
+    color: darkgray;
+    font-size: 26px;
+    margin-left: 10px;
+  }
 
-    .header-button_icon {
-        size: 20px;
-    }
+  .header-button_icon {
+    size: 20px;
+  }
 
-    .header-button {
-        height: 70px;
-        width: 550px;
-        flex-direction: row;
-        background-color: #FFFAFA;
-        border-width: 1px;
-        border-radius: 15px;
-        border-color: #FFFAFA;
-        align-items: center;
-        justify-content: center;
-    }
-    .rcmdrow {
-        margin-top: 10px;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  .header-button {
+    height: 70px;
+    width: 550px;
+    flex-direction: row;
+    background-color: #FFFAFA;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: #FFFAFA;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .tabs {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 750px;
+  .rcmdrow {
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-    }
+  .tabs {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 750px;
+  }
+
+  .refresh {
+    height: 100px;
+  }
+
+  .scroller {
+    width: 750px;
+    height: auto;
+  }
 </style>
 
 <script>
-  import {ONavPage, OTabs, OTab, OButton, OHeader, OIcon, OSearchBar, OH3, OSwiper, OButtonTextBtn} from 'iweex'
-  import ImageList from './imagelist.vue'
+  import {
+    ONavPage,
+    OTabs,
+    OTab,
+    OButton,
+    OHeader,
+    OIcon,
+    OSearchBar,
+    OH3,
+    OSwiper,
+    OButtonTextBtn,
+    OLoadingMore
+  } from 'iweex'
+  import ImageTextGroup from './imagetextgroup.vue'
   import IdleRcmdItem from './IdleRcmdItem.vue'
   import ImageTextcell from './recommend.vue'
+  import ImageList from '../components/Imagelist.vue'
+  import ORefresh from '../../node_modules/iweex/src/o-components/components/refresh/O-Refresh-Cell.vue'
 
   const modal = weex.requireModule('modal')
 
   export default {
     components: {
+      ORefresh,
       OButton,
       OHeader,
       OIcon,
@@ -127,12 +160,14 @@
       OH3,
       OSwiper,
       OButtonTextBtn,
-      ImageList,
+      ImageTextGroup,
       ONavPage,
       OTabs,
       OTab,
       IdleRcmdItem,
-      ImageTextcell
+      ImageTextcell,
+      OLoadingMore,
+      ImageList
     },
     data () {
       return {
@@ -180,7 +215,8 @@
             name: 'romalazio',
             time: '2小时',
             icon: 'http://pic1.16pic.com/00/13/31/16pic_1331067_b.jpg',
-            avatar: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
+            avater: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
+            imageSrc: ['http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg'],
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
@@ -192,7 +228,11 @@
             name: 'xiexiaoxi888',
             time: '2小时',
             icon: 'http://pic1.16pic.com/00/13/31/16pic_1331067_b.jpg',
-            avatar: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
+            avater: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
+            imageSrc: ['http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg',
+              'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/hunsha1.jpg',
+              'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/hunsha2.jpg',
+              'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/hunsha3.jpg'],
             discribe: '我美吗？',
             address: '南充',
             Label: '摩托moto',
@@ -263,20 +303,20 @@
                 discribe: 'fhsdlkfjlfldsfjldsf'
               }]
           }
-        ]
+        ],
+        show: false
 
       }
     },
     computed: {
-      likesable () {
-        if (this.likesCount === 0) {
-          this.likes = ''
+      displayRefresh () {
+        var result = ''
+        if (this.show) {
+          result = 'show'
+        } else {
+          result = 'hide'
         }
-      },
-      leaveable () {
-        if (this.leaveWord === 0) {
-          this.IleaveWord = ''
-        }
+        return result
       }
     },
     methods: {
@@ -290,7 +330,14 @@
       tabsChange2 (index, tabs) {
         this.tab2 = tabs[index].value
         this.tabIndex2 = index
-      }
+      },
+      onrefresh (event) {
+        this.show = true
+        setTimeout(() => {
+          this.show = false
+        }, 1000)
+      },
+      onPulldown () {}
     }
   }
 </script>

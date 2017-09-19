@@ -1,26 +1,33 @@
 <template>
-    <div>
-        <router-view/>
-        <OTabbar
-                :value="$route.path"
-                router
-                :tabbarItems="tabItems">
-        </OTabbar>
-        <div class="publish-out">
-            <div class="publish" @click="publish">
-                <OIcon type="icon-add"></OIcon>
-            </div>
-        </div>
-        <OMask :show="maskshow" @onClick="maskClick"></OMask>
+  <div>
+    <router-view/>
+    <OTabbar
+      :value="$route.path"
+      router
+      :tabbarItems="tabItems">
+    </OTabbar>
+    <div class="publish-out">
+      <div class="publish" @click="publish">
+        <OIcon type="icon-add" ref="iconadd"></OIcon>
+      </div>
     </div>
+    <OMask :show="maskshow" @onClick="maskClick">
+      <Publish :isclick="isMaskclick"></Publish>
+      <OIcon type="icon-roundclose" class="div-icon" ref="iconcancel"></OIcon>
+    </OMask>
+  </div>
 </template>
 
 <script>
   import { OTabbar, OIcon, OMask } from 'iweex'
+  import Publish from './publish.vue'
+
+  const animation = weex.requireModule('animation')
+  // const modal = weex.requireModule('modal')
 
   export default {
     components: {
-      OTabbar, OIcon, OMask
+      OTabbar, OIcon, OMask, Publish
     },
     data () {
       return {
@@ -67,42 +74,92 @@
           }
         ],
         maskshow: false,
-        nogrey: true
+        radius: 0,
+        isMaskclick: false
       }
     },
     methods: {
       publish () {
-        this.maskshow = true
+        console.log('点击动画')
+        var iconAdd = this.$refs.iconadd
+        // this.radius++
+        var ra = 45
+        animation.transition(iconAdd, {
+          styles: {
+            transform: 'rotate(' + ra + 'deg)'
+          },
+          duration: 200,
+          delay: 0,
+          timingFunction: 'ease-in'
+        }, function () {
+          console.log('动画完成')
+        })
+        setTimeout(() => {
+          animation.transition(iconAdd, {
+            styles: {
+              transform: 'rotate(' + 0 + 'deg)'
+            },
+            duration: 100,
+            delay: 0,
+            timingFunction: 'ease-in'
+          }, function () {
+            console.log('动画完成')
+          })
+          this.maskshow = true
+        }, 200)
       },
       maskClick () {
-        this.maskshow = !this.maskshow
+        setTimeout(() => {
+          this.maskshow = !this.maskshow
+          this.isMaskclick = false
+        }, 400)
+        this.isMaskclick = true
+        var iconCancel = this.$refs.iconcancel
+        animation.transition(iconCancel, {
+          styles: {
+            transform: 'rotate(-45deg)'
+          },
+          duration: 200,
+          delay: 0,
+          timingFunction: 'linear'
+        }, function () {
+          console.log('动画完成')
+        })
       }
-    }
+    },
+    computed: {}
   }
 </script>
 
 <style scoped>
 
-    .publish {
-        width: 90px;
-        height: 90px;
-        border-radius: 45px;
-        background-color: #FFD700;
-        position: fixed;
-        bottom: 20px;
-        left: 330px;
-        justify-content: center;
-        align-items: center;
-    }
-    .publish-out{
-        width: 100px;
-        height: 100px;
-        border-radius: 50px;
-        border-top-width: 1px;
-        border-color: lightgray;
-        background-color: #f7f7fa;
-        position: fixed;
-        bottom: 20px;
-        left: 325px;
-    }
+  .publish {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    background-color: #FFD700;
+    position: fixed;
+    bottom: 20px;
+    left: 330px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .publish-out {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border-top-width: 1px;
+    border-color: lightgray;
+    background-color: #f7f7fa;
+    position: fixed;
+    bottom: 20px;
+    left: 325px;
+  }
+
+  .div-icon {
+    position: absolute;
+    bottom: 35px;
+  }
+
 </style>

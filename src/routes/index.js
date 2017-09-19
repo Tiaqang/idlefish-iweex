@@ -1,13 +1,13 @@
-import indexweb from '../views/index-web'
 import idlefish from '../views/idlefish.vue'
 import fishpond from '../views/fishpond.vue'
 import publish from '../views/publish.vue'
 import message from '../views/message.vue'
 import home from '../views/home.vue'
+import indexweb from '../views/index-web.vue'
 
 const routes = [
   {
-    name: 'index',
+    name: 'indexweb',
     path: '/',
     component: indexweb,
     children: [
@@ -38,6 +38,7 @@ const routes = [
       }
     ]
   }
+
 ]
 
 export default routes
