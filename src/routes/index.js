@@ -6,6 +6,8 @@ import message from '../views/message.vue'
 import home from '../views/home.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
+import classify from '../views/classify.vue'
+import chatpanel from '../views/chatpanel.vue'
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
         name: 'home',
         path: '/home',
         component: home
+      },
+      {
+        name: 'classify',
+        path: '/classify',
+        component: classify
+      },
+      {
+        name: 'chatpanel',
+        path: '/chatpanel',
+        component: chatpanel
       }
     ]
   },

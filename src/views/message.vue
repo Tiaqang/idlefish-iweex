@@ -10,17 +10,17 @@
             <div v-for="message in messages">
                 <ImgTripleTextCell :title="message.title" :desc="message.desc" :time="message.time"
                                    :img_main="message.img1"
-                                   :img_right="message.img2" @onClick="cellClick"></ImgTripleTextCell>
+                                   :img_right="message.img2" @onClick="jump('/chatpanel')"></ImgTripleTextCell>
             </div>
             <div v-for="message in messages">
                 <ImgTripleTextCell :title="message.title" :desc="message.desc" :time="message.time"
                                    :img_main="message.img1"
-                                   :img_right="message.img2" @onClick="cellClick"></ImgTripleTextCell>
+                                   :img_right="message.img2" @onClick="jump('/chatpanel')"></ImgTripleTextCell>
             </div>
             <div v-for="message in messages">
                 <ImgTripleTextCell :title="message.title" :desc="message.desc" :time="message.time"
                                    :img_main="message.img1"
-                                   :img_right="message.img2" @onClick="cellClick"></ImgTripleTextCell>
+                                   :img_right="message.img2" @onClick="jump('/chatpanel')"></ImgTripleTextCell>
             </div>
         </div>
     </ONavPage>
@@ -61,7 +61,7 @@
     },
     methods: {
       cellClick () {
-        alert('您点击了消息')
+
       }
     }
   }

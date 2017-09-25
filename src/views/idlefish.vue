@@ -6,7 +6,7 @@
                 <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
                 <text class="header-button_text">连衣裙</text>
             </div>
-            <OIcon slot="right" type="icon-sortlight"></OIcon>
+            <OIcon slot="right" type="icon-sortlight" @click="jump('/classify')"></OIcon>
         </OHeader>
 
         <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
