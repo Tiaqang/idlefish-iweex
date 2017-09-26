@@ -1,13 +1,13 @@
 <template>
   <div class="div-out" :class="maskclick">
-    <div class="div-circle_left" ref="circleleft">
-      <image></image>
+    <div class="div-circle_left" ref="circleleft" @click="addpublish">
+      <image src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3874593207,1898074018&fm=27&gp=0.jpg" class="image_left" resize="cover"></image>
     </div>
-    <div class="div-circle_center" ref="circlecenter">
-      <image></image>
+    <div class="div-circle_center" ref="circlecenter" @click="addpublish">
+      <image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1902469659,4140377193&fm=27&gp=0.jpg" class="image_center" resize="cover"></image>
     </div>
-    <div class="div-circle_right" ref="circleright">
-      <image></image>
+    <div class="div-circle_right" ref="circleright" @click="addpublish">
+      <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4172920234,3688928461&fm=27&gp=0.jpg" class="image_left" resize="cover"></image>
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
   import { OIcon } from 'iweex'
 
   const animation = weex.requireModule('animation')
+  const modal = weex.requireModule('modal')
 
   export default {
     components: {
@@ -114,6 +115,14 @@
       }, function () {
         console.log('动画完成')
       })
+    },
+    methods: {
+      addpublish () {
+        modal.toast({
+          message: '新增发布',
+          duration: 0.3
+        })
+      }
     }
   }
 </script>
@@ -134,7 +143,6 @@
     width: 400px;
     height: 400px;
     border-radius: 200px;
-    background-color: #FFD700;
   }
 
   .div-circle_center {
@@ -155,5 +163,13 @@
     height: 400px;
     border-radius: 200px;
     background-color: #FFD700;
+  }
+  .image_left{
+    width: 400px;
+    height: 400px;
+  }
+  .image_center{
+    width: 10px;
+    height: 10px;
   }
 </style>

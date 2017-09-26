@@ -23,6 +23,11 @@
                          :recommenditems="item.array"></ImageTextcell>
         </div>
       </div>
+      <div class="textonimage">
+        <div v-for="i in textonimage" class="textonimage-div">
+          <TextOnImage :imagesrc="i.imagesrc" :text="i.text"></TextOnImage>
+        </div>
+      </div>
       <div class="rcmdrow">
         <div v-for="item in items2">
           <ImageTextcell :RcmdHeader="item.header" :IconColor="item.color"
@@ -127,6 +132,13 @@
     width: 750px;
     height: auto;
   }
+  .textonimage{
+    flex-direction: row;
+  }
+  .textonimage-div{
+    flex: 1;
+    background-color: white;
+  }
 </style>
 
 <script>
@@ -148,6 +160,7 @@
   import ImageTextcell from './recommend.vue'
   import ImageList from '../components/Imagelist.vue'
   import ORefresh from '../../node_modules/iweex/src/o-components/components/refresh/O-Refresh-Cell.vue'
+  import TextOnImage from '../components/TextOnImage.vue'
 
   const modal = weex.requireModule('modal')
 
@@ -168,7 +181,8 @@
       IdleRcmdItem,
       ImageTextcell,
       OLoadingMore,
-      ImageList
+      ImageList,
+      TextOnImage
     },
     data () {
       return {
@@ -190,22 +204,32 @@
             text: '桂林山水甲天下'
           }
         ],
+        textonimage: [
+          {
+            imagesrc: 'http://www.quanjing.com/image/2016index/ls2.jpg?v=02',
+            text: '#打包拿走'
+          },
+          {
+            imagesrc: 'http://qq.yh31.com/tp/dw/dw37.gif',
+            text: '#视频秀宝贝'
+          }
+        ],
         images: [
           {
             text: '卖闲置',
-            src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999'
+            src: 'http://pic31.photophoto.cn/20140525/0022005908947598_b.jpg'
           },
           {
             text: '逛同城',
-            src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999'
+            src: 'http://pic73.nipic.com/file/20150726/2150509_071753228000_2.jpg'
           },
           {
             text: '租房子',
-            src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999'
+            src: 'http://pic.35pic.com/normal/08/44/50/2531170_094029506000_2.jpg'
           },
           {
             text: '找人学',
-            src: '//img2.ciurl.cn/flashsale/upload/xinfotek_upload/2017/08/22/1503384938804651.jpg_b_750x9999'
+            src: 'http://img3.imgtn.bdimg.com/it/u=2975616163,2196507024&fm=214&gp=0.jpg'
           }
         ],
         tab2: 'one1',
@@ -247,12 +271,12 @@
             color: '#4bd9fd',
             array: [
               {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
+                src: 'http://pic29.photophoto.cn/20131103/0017030652340171_b.jpg',
                 label: '七折转手',
                 discribe: '超近期买入'
               },
               {
-                src: 'http://www.rizhi123.com/ueditor/php/upload/image/20170116/1484533362694503.jpg',
+                src: 'http://img2.imgtn.bdimg.com/it/u=1720903839,2572848857&fm=27&gp=0.jpg',
                 label: '仅此一件',
                 discribe: '不看后悔系列'
               }]
