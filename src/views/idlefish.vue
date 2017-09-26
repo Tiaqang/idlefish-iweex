@@ -7,11 +7,12 @@
           <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
           <text class="header-button_text">连衣裙</text>
         </div>
-        <OIcon slot="right" type="icon-sortlight"></OIcon>
+        <OIcon slot="right" type="icon-sortlight" @click="jump('/classify')"></OIcon>
       </OHeader>
       <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
           <OLoadingMore>臣妾正在努力加载哟...</OLoadingMore>
       </refresh>-->
+
 
       <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
       <ImageTextGroup :images="images" class="top"></ImageTextGroup>

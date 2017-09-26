@@ -7,6 +7,8 @@ import indexweb from '../views/index-web.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
 import publishidle from '../views/publishIdle.vue'
+import classify from '../views/classify.vue'
+import chatpanel from '../views/chatpanel.vue'
 
 const routes = [
   {
@@ -38,6 +40,16 @@ const routes = [
         name: 'home',
         path: '/home',
         component: home
+      },
+      {
+        name: 'classify',
+        path: '/classify',
+        component: classify
+      },
+      {
+        name: 'chatpanel',
+        path: '/chatpanel',
+        component: chatpanel
       }
     ]
   },
