@@ -1,4 +1,5 @@
 <template>
+  <div>
     <ONavPage navbarhide="hide" pageWrapperColor="#F3F5F9">
         <div v-if="!islogin" style="margin-bottom: 11px" @click="Ilogin()">
             <image class="Myheader" src="http://s10.sinaimg.cn/middle/5a3ab1b1x9961016a8699&690" resize="cover"></image>
@@ -104,6 +105,7 @@
             </OCell>
         </div>
     </OnavPage>
+  </div>
 </template>
 
 <style scoped>

@@ -8,13 +8,14 @@
             </div>
             <OTabs :value="tab4" @input="tabsChange4" :tabIndex="tabIndex4" class="tabs">
                 <OTab label="房屋租赁" value="one">
-                    <text>已发货...</text>
+                   <TabContent></TabContent>
+                    <!--<text>已发货...</text>-->
                 </OTab>
                 <OTab label="技能服务" value="two">
-                    <text>未发货1...</text>
+                  <TabContent></TabContent>
                 </OTab>
                 <OTab label="移动电话" value="three">
-                    <text>未发货2...</text>
+                  <TabContent></TabContent>
                 </OTab>
                 <OTab label="女士服装" value="four">
                     <text>未发货2...</text>
@@ -49,11 +50,13 @@
   //, OTab, OTabs
   import OTab from '../components/O-Tab.vue'
   import OTabs from '../components/O-Tabs.vue'
+  import TabContent from './TabContent.vue'
   export default {
     components: {
       ONavPage,
       OTab,
-      OTabs
+      OTabs,
+      TabContent
     },
     data () {
       return {

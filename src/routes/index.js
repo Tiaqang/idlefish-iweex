@@ -1,9 +1,9 @@
-import indexweb from '../views/index-web'
 import idlefish from '../views/idlefish.vue'
 import fishpond from '../views/fishpond.vue'
 import publish from '../views/publish.vue'
 import message from '../views/message.vue'
 import home from '../views/home.vue'
+import indexweb from '../views/index-web.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
 import classify from '../views/classify.vue'
@@ -11,7 +11,7 @@ import chatpanel from '../views/chatpanel.vue'
 
 const routes = [
   {
-    name: 'index',
+    name: 'indexweb',
     path: '/',
     component: indexweb,
     children: [
@@ -62,6 +62,7 @@ const routes = [
     path: '/userinfo',
     component: userinfo
   }
+
 ]
 
 export default routes

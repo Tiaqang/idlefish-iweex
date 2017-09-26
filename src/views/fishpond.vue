@@ -1,4 +1,5 @@
 <template>
+  <div>
     <ONavPage
             title="FishPond"
             navbarhide="hide">
@@ -72,6 +73,7 @@
                            @onClick="enterClick"></ImageTextDescButt>
         <TextImageCellList :label="label" :imgtxtlist="imgtxtlist" @onClick="moreClick"></TextImageCellList>
     </ONavPage>
+  </div>
 </template>
 <script>
   import { ONavPage, OSearchBar, OSwiper } from 'iweex'
