@@ -7,7 +7,7 @@
             </div>
         </div>
         <div v-for="item in recommenditems">
-            <recommendItem :Iicon="item.src" :Ilabel="item.label" :Idiscribe="item.discribe"></recommendItem>
+            <recommendItem :Iicon="item.src" :Ilabel="item.label" :Idiscribe="item.discribe" @click="onclick"></recommendItem>
         </div>
     </div>
 </template>
@@ -67,6 +67,11 @@
     computed: {
       colorlist () {
         return {'background-color': this.IconColor}
+      }
+    },
+    methods: {
+      onclick () {
+        this.$emit('click')
       }
     }
   }

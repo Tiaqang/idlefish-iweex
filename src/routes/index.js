@@ -7,6 +7,8 @@ import indexweb from '../views/index-web.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
 import RcmdItemDetail from '../views/RcmdItemDetail.vue'
+import classify from '../views/classify.vue'
+import chatpanel from '../views/chatpanel.vue'
 
 const routes = [
   {
@@ -38,6 +40,16 @@ const routes = [
         name: 'home',
         path: '/home',
         component: home
+      },
+      {
+        name: 'classify',
+        path: '/classify',
+        component: classify
+      },
+      {
+        name: 'chatpanel',
+        path: '/chatpanel',
+        component: chatpanel
       }
     ]
   },
@@ -56,7 +68,5 @@ const routes = [
     path: '/RcmdItemDetail',
     component: RcmdItemDetail
   }
-
 ]
-
 export default routes

@@ -1,5 +1,5 @@
 <template>
-    <div class="Iitem">
+    <div class="Iitem" @click="onclick">
         <image :src="Iicon" class="itemicon"></image>
         <div class="TextItem">
             <text class="ILable">{{Ilabel}}</text>
@@ -46,6 +46,7 @@
 </style>
 
 <script>
+  const modal = weex.requireModule('modal')
   export default {
     components: {},
     props: {
@@ -57,12 +58,20 @@
       },
       Idiscribe: {
         default: '为你的爱豆打call'
+      },
+      Iaddress: {
+        default: ''
+      }
+    },
+    methods: {
+      onclick () {
+        // this.jump(this.Iaddress)
+        modal.toast({
+          message: this.Ilabel,
+          duration: 0.3
+        })
+        this.$emit('click')
       }
     }
-//    data () {
-//      return {
-//
-//      }
-//    },
   }
 </script>
