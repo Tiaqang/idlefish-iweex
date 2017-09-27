@@ -1,71 +1,75 @@
 <template>
   <div>
-    <OWTabbar imageType="iconimage" :tabItems="tabItems" @tabBarOnClick="tabBarOnClick"></OWTabbar>
-    <div class="publish-out" @click="publish" >
-      <div class="publish" ref="iconadd">
-        <OIcon type="icon-add"></OIcon>
+    <router-view/>
+    <OTabbar
+      :value="$route.path"
+      router
+      :tabbarItems="tabItems">
+    </OTabbar>
+    <div class="publish-out">
+      <div class="publish" @click="publish">
+        <OIcon type="icon-add" ref="iconadd"></OIcon>
       </div>
     </div>
     <OMask :show="maskshow" @onClick="maskClick">
       <Publish :isclick="isMaskclick"></Publish>
-      <div class="div-icon" ref="iconcancel">
-        <OIcon type="icon-roundclose"></OIcon>
-      </div>
+      <OIcon type="icon-roundclose" class="div-icon" ref="iconcancel"></OIcon>
     </OMask>
   </div>
 </template>
+
 <script>
-  import { OWTabbar, OIcon, OMask } from 'iweex'
+  import { OTabbar, OIcon, OMask } from 'iweex'
   import Publish from './publish.vue'
 
   const animation = weex.requireModule('animation')
+  // const modal = weex.requireModule('modal')
+
   export default {
     components: {
-      OWTabbar, OIcon, OMask, Publish
-    },
-    created () {
+      OTabbar, OIcon, OMask, Publish
     },
     data () {
       return {
         tabItems: [
           {
-            index: 0,
+            index: '/',
             label: '闲鱼',
             titleColor: '#000000',
-            src: weex.config.bundleUrl.split('/').slice(0, -1).join('/') + '/idlefish.js',
-            icon: 'icon-home_light',
-            visibility: 'visible'
+            nUrl: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+            aUrl: 'http://gtms04.alicdn.com/tps/i4/',
+            icon: 'icon-home_light'
           },
           {
-            index: 1,
+            index: '/fishpond',
             label: '鱼塘',
             titleColor: '#000000',
-            src: weex.config.bundleUrl.split('/').slice(0, -1).join('/') + '/fishpond.js',
-            visibility: 'hidden',
+            nUrl: 'http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png',
+            aUrl: 'http://gtms04.alicdn.com/tps/i4/',
             icon: 'icon-wang'
           },
           {
-            index: 2,
+            index: '/publish',
             label: '',
             titleColor: '#000000',
-            src: '',
-            visibility: 'hidden',
+            nUrl: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+            aUrl: 'http://gtms04.alicdn.com/tps/i4/',
             icon: ''
           },
           {
-            index: 3,
+            index: '/message',
             label: '消息',
             titleColor: '#000000',
-            src: weex.config.bundleUrl.split('/').slice(0, -1).join('/') + '/message.js',
-            visibility: 'hidden',
+            nUrl: 'http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png',
+            aUrl: 'http://gtms04.alicdn.com/tps/i4/',
             icon: 'icon-message_light'
           },
           {
-            index: 4,
+            index: '/home',
             label: '我的',
             titleColor: '#000000',
-            src: weex.config.bundleUrl.split('/').slice(0, -1).join('/') + '/home.js',
-            visibility: 'hidden',
+            nUrl: 'http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png',
+            aUrl: 'http://gtms04.alicdn.com/tps/i4/',
             icon: 'icon-my_light'
           }
         ],
@@ -121,13 +125,12 @@
         }, function () {
           console.log('动画完成')
         })
-      },
-      tabBarOnClick (e) {
-        console.log('tabBarOnClick', e.index)
       }
-    }
+    },
+    computed: {}
   }
 </script>
+
 <style scoped>
 
   .publish {
@@ -135,11 +138,11 @@
     height: 90px;
     border-radius: 45px;
     background-color: #FFD700;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     bottom: 20px;
     left: 330px;
+    justify-content: center;
+    align-items: center;
   }
 
   .publish-out {
@@ -152,18 +155,11 @@
     position: fixed;
     bottom: 20px;
     left: 325px;
-    justify-content: center;
-    align-items: center;
   }
 
   .div-icon {
     position: absolute;
-    width: 90px;
-    height: 90px;
-    bottom: 20px;
-    left: 330px;
-    justify-content: center;
-    align-items: center;
+    bottom: 35px;
   }
 
 </style>
