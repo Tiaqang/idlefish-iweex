@@ -6,6 +6,7 @@ import home from '../views/home.vue'
 import indexweb from '../views/index-web.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
+import RcmdItemDetail from '../views/RcmdItemDetail.vue'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     name: 'userinfo',
     path: '/userinfo',
     component: userinfo
+  },
+  {
+    name: 'RcmdItemDetail',
+    path: '/RcmdItemDetail',
+    component: RcmdItemDetail
   }
 
 ]

@@ -1,5 +1,5 @@
 <template>
-    <div class="Idlecolumn">
+    <div class="Idlecolumn" @click="ShowDetail()">
         <div class="Idlerow">
             <image :src="user_avatar" class="Idleavatar"></image>
             <div class="infoname">
@@ -9,7 +9,7 @@
                     <text class="time">{{Itime}}</text>
                 </div>
             </div>
-            <text class="price">{{Iprice}}</text>
+        <text class="price">{{Iprice}}</text>
         </div>
         <div class="photos">
             <image :src="imageSrc[0]" class="goods" resize="cover" v-if="isOnePhoto"></image>
@@ -57,8 +57,9 @@
 
     .infoname {
         flex-direction: column;
-        width: 400px;
+        width: 420px;
         margin-left: 20px;
+        justify-content: flex-end;
     }
 
     .username {
@@ -79,8 +80,9 @@
 
     .price {
         color: red;
-        font-size: 45px;
+        font-size: 42px;
         font-weight: 300;
+        text-align: right;
     }
 
     .time {
@@ -152,8 +154,13 @@
 
 <script>
   import ImageList from '../components/Imagelist.vue'
+//  const storage = weex.requireModule('storage')
+
   export default {
-    components: { ImageList },
+    components: {
+      ImageList
+//      child: require('./RcmdItemDetail.vue')
+    },
     props: {
       price: {
         default: 0.00
@@ -218,6 +225,11 @@
       }
     },
     methods: {
+      ShowDetail: function () {
+        const dataa = new BroadcastChannel('Data')
+        dataa.postMessage([this.Iprice, this.Itime, this.IAddress, this.ILabel, this.likes, this.IleaveWord, this.likeOrleave, this.islike, this.isOnePhoto])
+        this.jump('RcmdItemDetail')
+      }
     }
   }
 </script>
