@@ -9,7 +9,8 @@
         <div class="input">
           <OInput type="text" placeholder="标题 品类品牌型号都是买家喜欢搜索的" autofocus v-model="inputheader"></OInput>
         </div>
-        <OInputarea type="text" :autofocus=true :rows=5 :showTip=true placeholder="描述一下宝贝的细节或故事" v-model="textarea" class="inputarea"></OInputarea>
+        <OInputarea type="text" :autofocus=true :rows=5 :showTip=true placeholder="描述一下宝贝的细节或故事" v-model="textarea"
+                    class="inputarea"></OInputarea>
 
         <Imagelist :imageSrc="imageSrc" class="imagelist" @clickAdd="clickadd" @clickImage="clickimage"></Imagelist>
         <div class="location-div" @click="choseaddress">
@@ -20,8 +21,8 @@
       <div style="margin-top: 20px">
         <OTabs :value="tabs" @input="tabchange">
           <OTab label="一口价" value="first">
-            <OCell Title="价格" showArrow @Click="chosePrice"></OCell>
-            <OCell Title="分类" showArrow @Click="choseSort"></OCell>
+            <OCell Title="价格" showArrow @onClick="chosePrice"></OCell>
+            <OCell Title="分类" showArrow @onClick="choseSort"></OCell>
           </OTab>
           <OTab label="拍卖" value="second">
             <OCell Title="起拍价" :value="pricestart" showArrow></OCell>
@@ -33,28 +34,32 @@
           </OTab>
         </OTabs>
       </div>
+      <Popup v-model="isclick"></Popup>
       <div class="button-div">
-      <OButton type="primary" size="large" class="button">确定发布</OButton>
+        <OButton type="primary" size="large" class="button">确定发布</OButton>
       </div>
     </ONavPage>
   </div>
 </template>
 
 <style scoped>
-  .whole-div{
+  .whole-div {
     width: 750px;
     background-color: white;
   }
-  .input{
+
+  .input {
     height: 88px;
     align-items: center;
     margin-left: 20px;
   }
-  .inputarea{
+
+  .inputarea {
     margin-left: 13px;
     margin-right: 10px;
   }
-  .button-div{
+
+  .button-div {
     width: 750px;
     padding: 20px;
     position: fixed;
@@ -64,15 +69,18 @@
     align-items: center;
     background-color: white;
   }
-  .button{
+
+  .button {
     background-color: #fa4e4e;
     font-size: 26px;
   }
-  .imagelist{
+
+  .imagelist {
     margin-left: 20px;
     margin-top: 10px;
   }
-  .location-div{
+
+  .location-div {
     width: 750px;
     flex-direction: row;
     margin-top: 20px;
@@ -84,11 +92,13 @@
 <script>
   import { ONavPage, OInput, OInputarea, OButton, OCell, OTabs, OTab, OHeader, OIcon, OCard } from 'iweex'
   import Imagelist from '../components/PublishImageList.vue'
+  import Popup from './text.vue'
+
   const modal = weex.requireModule('modal')
 
   export default {
     components: {
-      ONavPage, OInput, OInputarea, OButton, OCell, OTabs, OTab, OHeader, OIcon, OCard, Imagelist
+      ONavPage, OInput, OInputarea, OButton, OCell, OTabs, OTab, OHeader, OIcon, OCard, Imagelist, Popup
     },
     data () {
       return {
@@ -104,15 +114,20 @@
         imageSrc: [
           'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/hunsha2.jpg',
           'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/hunsha3.jpg'],
-        location: '江苏 南京 玄武区'
+        location: '江苏 南京 玄武区',
+        isclick: false
       }
     },
     methods: {
       tabchange (index, tab) {
         this.tabs = tab[index].value
       },
-      chosePrice () {},
-      choseSort () {},
+      chosePrice () {
+        this.isclick = true
+        console.log(this.isclick)
+      },
+      choseSort () {
+      },
       clickadd () {
         modal.toast({
           message: '添加',

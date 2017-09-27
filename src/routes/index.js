@@ -1,6 +1,5 @@
 import idlefish from '../views/idlefish.vue'
 import fishpond from '../views/fishpond.vue'
-import publish from '../views/publish.vue'
 import message from '../views/message.vue'
 import home from '../views/home.vue'
 import indexweb from '../views/index-web.vue'
@@ -9,6 +8,8 @@ import userinfo from '../views/userinfo.vue'
 import publishidle from '../views/publishIdle.vue'
 import classify from '../views/classify.vue'
 import chatpanel from '../views/chatpanel.vue'
+
+import test from '../views/text.vue'
 
 const routes = [
   {
@@ -27,11 +28,6 @@ const routes = [
         component: fishpond
       },
       {
-        name: 'publish',
-        path: '/publish',
-        component: publish
-      },
-      {
         name: 'message',
         path: '/message',
         component: message
@@ -40,16 +36,6 @@ const routes = [
         name: 'home',
         path: '/home',
         component: home
-      },
-      {
-        name: 'classify',
-        path: '/classify',
-        component: classify
-      },
-      {
-        name: 'chatpanel',
-        path: '/chatpanel',
-        component: chatpanel
       }
     ]
   },
@@ -67,8 +53,22 @@ const routes = [
     name: 'publishidle',
     path: '/publishidle',
     component: publishidle
+  },
+  {
+    name: 'chatpanel',
+    path: '/chatpanel',
+    component: chatpanel
+  },
+  {
+    name: 'classify',
+    path: '/classify',
+    component: classify
+  },
+  {
+    name: 'test',
+    path: '/test',
+    component: test
   }
-
 ]
 
 export default routes
