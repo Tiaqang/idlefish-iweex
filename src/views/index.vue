@@ -77,7 +77,6 @@
     methods: {
       publish () {
         var iconAdd = this.$refs.iconadd
-        // this.radius++
         var ra = 45
         animation.transition(iconAdd, {
           styles: {

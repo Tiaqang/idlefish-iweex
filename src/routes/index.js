@@ -9,7 +9,7 @@ import publishidle from '../views/publishIdle.vue'
 import classify from '../views/classify.vue'
 import chatpanel from '../views/chatpanel.vue'
 
-import test from '../views/text.vue'
+import test from '../views/Iinput.vue'
 
 const routes = [
   {
