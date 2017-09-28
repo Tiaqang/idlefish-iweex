@@ -9,7 +9,6 @@
                       :style="{height: rpx( lineHeight)+'px', backgroundColor: activecolor }"></div>:style="tabHeight"-->
                 <div v-for="(tab, index) in tabs" class="tab"
                      :ref="'tab'+index"
-
                      @click="selectTab(index, tabs)">
                     <OIcon v-if="tab.icon"
                            class="tab-icon"
@@ -34,7 +33,7 @@
   const dom = weex.requireModule('dom')
 
   export default {
-    name: 'OTabs',
+    name: 'OTabsVertical',
     mixins: [Base],
     components: {
       OIcon

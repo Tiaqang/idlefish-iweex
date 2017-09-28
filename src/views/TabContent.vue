@@ -14,11 +14,13 @@
     <div style="margin-left: 30px;">
       <div v-for="item in this.items">
         <div v-if="item.type=== classname">
-          <ORow v-for="(row, key) in item.convertedList" :key="key">
-            <OCol v-for="(component, index) in row" :key="index">
+          <ORow v-for="(row, key) in item.convertedList" gutter=28 :key="key">
+            <OCol v-for="(component, index) in row" span="span" :key="index">
               <div class="card" @click="onClick">
                 <image class="card-img" :src="(filePath + component.img)"></image>
+                <div  class="card-text-div">
                 <text class="card-text">{{ component.text }}</text>
+                </div>
               </div>
             </OCol>
           </ORow>
@@ -93,6 +95,88 @@
               {
                 img: 'lunbo1.PNG',
                 text: '手机'
+              }
+            ]
+          },
+          {
+            type: '女士服装',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '女裙'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '女裤'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '女士T恤'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '女士外套'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '女士衬衫'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '婚纱'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '旗袍'
+              },
+              {
+                img: 'lunbo1.PNG',
+                text: '女士马甲'
+              }
+            ]
+          },
+          {
+            type: '个护美妆',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '香水'
+              }
+            ]
+          },
+          {
+            type: '箱包',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '手提包'
+              }
+            ]
+          },
+          {
+            type: '运动户外',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '球拍'
+              }
+            ]
+          },
+          {
+            type: '家用电器',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '空调'
+              }
+            ]
+          },
+          {
+            type: '玩具乐器',
+            list: [
+              {
+                img: 'lunbo1.PNG',
+                text: '玩具'
               }
             ]
           }
