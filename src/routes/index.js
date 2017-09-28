@@ -8,7 +8,7 @@ import userinfo from '../views/userinfo.vue'
 import publishidle from '../views/publishIdle.vue'
 import classify from '../views/classify.vue'
 import chatpanel from '../views/chatpanel.vue'
-
+import detail from '../views/detail.vue'
 import test from '../views/Iinput.vue'
 
 const routes = [
@@ -68,6 +68,11 @@ const routes = [
     name: 'test',
     path: '/test',
     component: test
+  },
+  {
+    name: 'detail',
+    path: '/detail',
+    component: detail
   }
 ]
 

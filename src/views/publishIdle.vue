@@ -300,7 +300,7 @@
           duration: 0.2
         })
         if (weex.config.env.platform === 'Web') {
-          this.jump('/')
+          this.jumpout()
         } else {
           this.jump('idlefish')
         }

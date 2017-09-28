@@ -2,21 +2,21 @@
   <div class="div-out" :class="maskclick">
     <div class="div-out_left">
       <div class="div-circle_left" ref="circleleft" @click="addpublish">
-        <image src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3874593207,1898074018&fm=27&gp=0.jpg"
+        <image src="http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/msg1.PNG"
                class="image_left" resize="cover"></image>
       </div>
       <text class="text">{{idle}}</text>
     </div>
     <div class="div-out_center">
       <div class="div-circle_center" ref="circlecenter" @click="addpublish">
-        <image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1902469659,4140377193&fm=27&gp=0.jpg"
+        <image src="http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/msg2.PNG"
                class="image_center" resize="cover"></image>
       </div>
       <text class="text">{{zufang}}</text>
     </div>
     <div class="div-out_right">
       <div class="div-circle_right" ref="circleright" @click="addpublish">
-        <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4172920234,3688928461&fm=27&gp=0.jpg"
+        <image src="http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/msg3.PNG"
                class="image_left" resize="cover"></image>
       </div>
       <text class="text">{{caiyi}}</text>

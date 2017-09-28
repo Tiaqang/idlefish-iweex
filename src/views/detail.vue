@@ -1,5 +1,7 @@
 <template>
-  <div class="Idlecolumn" @click="detail">
+
+  <div>
+    <ONavPage title="详情" @onClickBack="jumpout()" pageWrapperColor="white">
     <div class="Idlerow">
       <image :src="user_avatar" class="Idleavatar"></image>
       <div class="infoname">
@@ -11,14 +13,18 @@
       </div>
       <text class="price">{{Iprice}}</text>
     </div>
-    <div class="photos">
-      <image :src="imageSrc[0]" class="goods" resize="cover" v-if="isOnePhoto"></image>
-      <ImageList :imageSrc="imageSrc" v-else></ImageList>
-    </div>
+
     <div class="discribe">
       <text class="discribeText" lines="2">{{discribe}}</text>
     </div>
-    <div class="Idlerow">
+
+    <div class="photos">
+      <div v-for="(item, index) in imageSrc">
+        <image :src="item" resize="contain" class="goods"></image>
+      </div>
+    </div>
+
+    <div class="Idlerow" style="margin-bottom: 100px;">
       <text class="IdleAddress">{{IAddress}}</text>
       <text class="IdleLabel">{{ILabel}}</text>
       <div v-if="islike" class="likes">
@@ -30,16 +36,13 @@
         <text class="like-text">{{IleaveWord}}</text>
       </div>
     </div>
+      <DetailBottom></DetailBottom>
+    </ONavPage>
   </div>
+
 </template>
 
 <style scoped>
-  .Idlecolumn {
-    flex-direction: column;
-    width: 750px;
-    background-color: white;
-    margin-bottom: 20px;
-  }
 
   .Idlerow {
     margin-top: 20px;
@@ -91,8 +94,8 @@
   }
 
   .goods {
-    width: 400px;
-    height: 400px;
+    width: 750px;
+    height: 900px;
     border-style: solid;
   }
 
@@ -154,63 +157,55 @@
 </style>
 
 <script>
-  import ImageList from '../components/Imagelist.vue'
-
+  import { ONavPage } from 'iweex'
+  import DetailBottom from './detail-bottom.vue'
   const storage = weex.requireModule('storage')
-  export default {
-    components: {ImageList},
-    props: {
-      price: {
-        default: 0.00
-      },
-      username: {
-        default: '苦逼程序员'
-      },
-      Idletime: {
-        default: '未知时间'
-      },
-      timeicon: {
-        default: 'http://pic1.16pic.com/00/13/31/16pic_1331067_b.jpg'
-      },
-      user_avatar: {
-        default: 'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg'
-      },
-      discribe: {
-        default: '该用户尚未添加描述'
-      },
-      IdleAddress: {
-        default: '未知'
-      },
-      IdleLabel: {
-        default: '未加入鱼塘'
-      },
-      likesCount: {
-        default: 0
-      },
-      leaveWord: {
-        default: 0
-      },
-      imageSrc: {
-        default: []
-      }
 
+  export default {
+    components: {
+      ONavPage, DetailBottom
     },
+    props: {},
     data () {
       return {
-        Iprice: '￥' + this.price,
-        Itime: this.Idletime + '前来过',
-        IAddress: '来自' + this.IdleAddress,
-        ILabel: '鱼塘|' + this.IdleLabel,
-        likes: '点赞' + this.likesCount,
-        IleaveWord: '留言' + this.leaveWord,
+        user_avatar: '',
+        username: 'nsadas',
+        timeicon: '',
+        discribe: '',
+        Iprice: '',
+        Itime: '',
+        IAddress: '',
+        ILabel: '',
+        likes: '',
+        IleaveWord: '',
         likeOrleave: '',
         islike: false,
-        isOnePhoto: true
+        imageSrc: [
+          'http://h.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059aafc6cdb2134349b023bba07.jpg'
+        ]
       }
     },
     created () {
       this.islike = this.likesCount === '0' || this.leaveWord === '0'
-      this.isOnePhoto = this.imageSrc.length === 1
+      storage.getItem('value', event => {
+        console.log(event)
+        var array = event.data.split(',')
+        console.log(array[0])
+        this.Iprice = array[0]
+        this.Itime = array[1]
+        this.ILabel = array[2]
+        this.IAddress = array[3]
+        this.likes = array[4]
+        this.username = array[5]
+        this.user_avatar = array[6]
+        this.discribe = array[7]
+        this.IleaveWord = array[8]
+      })
+      storage.getItem('imagesrc', e => {
+        console.log(e)
+        var image = e.data.split(',')
+        this.imageSrc = image
+      })
     },
     computed: {
       likeable () {
@@ -220,21 +215,6 @@
         if (this.leaveWord !== '0') {
           this.likeOrleave = this.IleaveWord
         }
-      }
-    },
-    methods: {
-      detail () {
-        var image = ''
-        storage.setItem('value', this.Iprice + ',' + this.Itime + ',' + this.ILabel + ',' + this.IAddress + ',' + this.likes + ',' + this.username + ',' + this.user_avatar + ',' + this.discribe + ',' + this.IleaveWord + '')
-        for (var i = 0; i < this.imageSrc.length; i++) {
-          if (i !== this.imageSrc.length - 1) {
-            image = image + this.imageSrc[i] + ','
-          } else {
-            image = image + this.imageSrc[i]
-          }
-        }
-        storage.setItem('imagesrc', image)
-        this.jump('detail')
       }
     }
   }
