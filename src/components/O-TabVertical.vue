@@ -38,11 +38,11 @@
       }
       if (parent.$options._componentTag !== 'OTabsVertical') {
         modal.toast({message: 'OTabsVertical不能单独使用', duration: 0.3})
-        console.log(parent.$options._componentTag + '121')
         return
       }
       this.$parent = parent
       parent.addTab(this)
+      console.log(this.label)
     },
     beforeDestroy () {
       this.$parent && this.$parent.removeTab(this)

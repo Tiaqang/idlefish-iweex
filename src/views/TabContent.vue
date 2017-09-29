@@ -8,7 +8,8 @@
       </div>
     </div>
     <div class="middle-wrap">
-      <text>每日新发</text>
+      <div style="padding-top: 5px;">
+      <text>每日新发</text></div>
       <div class="small-right-arrow"></div>
     </div>
     <div style="margin-left: 30px;">
@@ -33,6 +34,7 @@
 <script>
   import { ORow, OCol } from 'iweex'
   const ROW_COLUMNS = 3
+//  const modal = weex.requireModule('modal')
   export default {
     name: 'TabContent',
     components: {
@@ -41,7 +43,7 @@
     },
     data () {
       return {
-        classname: '房屋租赁',
+        classname: '',
         $parent: null,
         filePath: 'http://idg-zhaoyang.tunnel.zhoumiao.com/IdleFish/src/assets/images/',
         items: [
@@ -184,8 +186,14 @@
       }
     },
     created () {
-      this.classname = this.$parent.$parent.label
-//      console.log(this.filePath)
+      let parent = this.$parent
+//      this.classname = parent.$parent.label
+
+      while (parent.$parent && parent.$options._componentTag !== 'OTabVertical') {
+        parent = parent.$parent
+      }
+      this.$parent = parent
+      this.classname = parent.label
       for (var key in this.items) {
         this.items[key]['convertedList'] = this.convertList(this.items[key].list)
       }
@@ -206,11 +214,9 @@
           } else {
             col++
           }
-
           if (!converted[row]) {
             converted[row] = {}
           }
-
           converted[row][col] = icon
           idx++
         })
@@ -224,6 +230,6 @@
 
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
   @import "../styles/TabContent.scss";
 </style>
