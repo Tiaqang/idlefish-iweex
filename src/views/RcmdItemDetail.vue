@@ -128,7 +128,14 @@
   }
 
   .image-div {
+    width: 750px;
+    margin: 20px;
+  }
 
+  .image{
+    width: 700px;
+    height: auto;
+    justify-content: center;
   }
 </style>
 <script>
@@ -179,6 +186,8 @@
       const receive = new BroadcastChannel('Data')
       receive.onmessage = function (e) {
         console.log(e.data)
+        Iarea = e.data.IAddress
+        Dprice = e.data.Iprice
       }
     }
   }

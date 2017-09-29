@@ -123,15 +123,6 @@
     margin-bottom: 10px;
     width: 750px;
   }
-
-  .refresh {
-    height: 100px;
-  }
-
-  .scroller {
-    width: 750px;
-    height: auto;
-  }
   .textonimage{
     flex-direction: row;
   }
@@ -161,7 +152,6 @@
   import ImageList from '../components/Imagelist.vue'
   import ORefresh from '../../node_modules/iweex/src/o-components/components/refresh/O-Refresh-Cell.vue'
   import TextOnImage from '../components/TextOnImage.vue'
-
   const modal = weex.requireModule('modal')
 
   export default {
@@ -328,9 +318,7 @@
                 discribe: 'fhsdlkfjlfldsfjldsf'
               }]
           }
-        ],
-        show: false
-
+        ]
       }
     },
     computed: {
