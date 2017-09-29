@@ -10,13 +10,13 @@
                 <div v-for="(tab, index) in tabs" class="tab"
                      :ref="'tab'+index"
                      @click="selectTab(index, tabs)">
-                    <OIcon v-if="tab.icon"
+                  <!--  <OIcon v-if="tab.icon"
                            class="tab-icon"
                            :size="iconsize"
                            :class="[tab.value===value? 'tab-active' : '']"
                            :color="tab.value===value? activecolor : defaultcolor"
                            :type="`${tab.icon}`">
-                    </OIcon>
+                    </OIcon>-->
                     <text class="tab-text" :style='{ color: tab.value===value? activecolor : defaultcolor }'>{{tab.label}}</text>
                 </div>
             </scroller>
@@ -30,7 +30,7 @@
   import { OIcon } from 'iweex'
   import Base from '../mixins/base.js'
   import event from '../const/event'
-  const dom = weex.requireModule('dom')
+//  const dom = weex.requireModule('dom')
 
   export default {
     name: 'OTabsVertical',
@@ -47,7 +47,7 @@
       // 属性值
       value: {
         type: [String, Number, Boolean, Object, Array],
-        default: 0
+        default: 1
       },
       // 图标
       icon: {
@@ -70,45 +70,46 @@
     data () {
       return {
         tabs: [],
-        // lineHeight: 50,
+//         lineHeight: 50,
         color: this.defaultcolor,
         refreshing: false,
-        showLoading: 'hide',
-        tabHeight: '120px'
+        showLoading: 'hide'
+//        tabHeight: '120px'
       }
     },
-    computed: {
-      activeIndex () {
-        let index = this.tabs.map(tab => tab.value).indexOf(this.value)
-        if (index < 0) index = 0
-        return index
-      }
-    },
-    watch: {
-      tabIndex () {
-        this.$nextTick(() => {
-          dom.getComponentRect(this.$refs.tabs, option => {
-            if (!option || option.result === false) {
-              return
-            }
-//            this.animateLine()
-            if (this.tabIndex === 0) {
-              this.animateTab(Number(this.tabIndex))
-            } else {
-              this.animateTab(Number(this.tabIndex) - 1)
-            }
-          })
-        })
-        this.selectTab(this.tabIndex, this.tabs)
-      },
-      value (val) {
-        this.$nextTick(() => {
+//    computed: {
+//      activeIndex () {
+//        let index = this.tabs.map(tab => tab.value).indexOf(this.value)
+//        if (index < 0) index = 0
+//        return index
+//      }
+//    },
+//    watch: {
+//      tabIndex () {
+//        this.$nextTick(() => {
+//          dom.getComponentRect(this.$refs.tabs, option => {
+//            if (!option || option.result === false) {
+//              return
+//            }
+//            if (this.tabIndex === 0) {
+//              this.animateTab(Number(this.tabIndex))
+//            } else {
+//              this.animateTab(Number(this.tabIndex) - 1)
+//            }
+//          })
+//        })
+//        this.selectTab(this.tabIndex, this.tabs)
+//      }
+//      ,
+//      value (val) {
+//        this.$nextTick(() => {
 //          this.animateLine()
-        })
-      },
-      tabs () {
-        this.$nextTick(() => {
-          dom.getComponentRect(this.$refs.tabs, option => {
+//        })
+//      }
+//      ,
+//      tabs () {
+//        this.$nextTick(() => {
+//          dom.getComponentRect(this.$refs.tabs, option => {
 //            if (!option || option.result === false) {
 //              return
 //            }
@@ -116,11 +117,11 @@
 //            console.log('wat: ' + option.size.height + ' ' + this.tabs.length + ' ' + this.rpx(option.size.height / this.tabs.length))
 //            this.lineHeight = 50
 //            this.animateLine()
-          })
-        })
-        this.selectTab(this.tabIndex, this.tabs)
-      }
-    },
+//          })
+//        })
+//        this.selectTab(this.tabIndex, this.tabs)
+//      }
+//    },
     methods: {
       addTab (tab) {
         this.tabs.push(tab)
@@ -130,7 +131,8 @@
       },
       selectTab (index = 0, tabs = undefined) {
         this.$emit(event.INPUT, index, tabs)
-      },
+      }
+//      ,
         /* animateLine () {
          const animation = weex.requireModule('animation')
          animation.transition(this.$refs.line, {
@@ -141,23 +143,24 @@
          }
          })
          }, */
-      animateTab (index) {
-        const el = this.$refs['tab' + index][0]
-        dom.scrollToElement(el, {})
-      }
-    },
-    created () {
-      this.$nextTick(() => {
-        dom.getComponentRect(this.$refs.tabs, option => {
+//      animateTab (index) {
+//        const el = this.$refs['tab' + index][0]
+//        dom.scrollToElement(el, {})
+//      }
+    }
+//    ,
+//    created () {
+//      this.$nextTick(() => {
+//        dom.getComponentRect(this.$refs.tabs, option => {
 //          if (!option || option.result === false) {
 //            return
 //          }
 //          this.tabHeight = {height: this.rpx(option.size.height / this.tabs.length) + 'px'}
 //          console.log('crea: ' + option.size.height + ' ' + this.tabs.length + ' ' + this.rpx(option.size.height / this.tabs.length))
 //          this.animateLine()
-        })
-      })
-    }
+//        })
+//      })
+//    }
   }
 </script>
 <style lang="sass" scoped>
