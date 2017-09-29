@@ -7,7 +7,10 @@
           <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
           <text class="header-button_text">连衣裙</text>
         </div>
-        <OIcon slot="right" type="icon-sortlight" @click="jump('/classify')"></OIcon>
+        <div slot="right" @click="jump('/classify')">
+          <OIcon  type="icon-sortlight"></OIcon>
+        </div>
+
       </OHeader>
       <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
           <OLoadingMore>臣妾正在努力加载哟...</OLoadingMore>
