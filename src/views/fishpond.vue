@@ -1,9 +1,10 @@
 <template>
   <div>
+    <!--<TextImageCellList :label="label" :imgtxtlist="imgtxtlist" @onClick="moreClick"></TextImageCellList>-->
     <ONavPage
             title="FishPond"
             navbarhide="hide">
-        <OSearchBar :hint="hint"></OSearchBar>
+        <!--<OSearchBar :hint="hint"></OSearchBar>-->
         <OSwiper
                 :imageLists="imageLists"
                 :switchTime="3000"
@@ -46,7 +47,7 @@
                            :name_pond="name_pond"
                            :desc_pond="desc_pond"
                            @onClick="enterClick"></ImageTextDescButt>
-        <TextImageCellList :label="label" :imgtxtlist="imgtxtlist" @onClick="moreClick"></TextImageCellList>
+      <TextImageCellList :label="label" :imgtxtlist="imgtxtlist" @onClick="moreClick"></TextImageCellList>
         <ImageTextDescButt :img_amount="img_amount"
                            :img1_src="img1_src"
                            :img2_src="img2_src"
