@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <ONavPage pageWrapperColor="#F3F5F9">
+  <div style="position:absolute; left:0px; right:0px;">
+    <!--<ONavPage pageWrapperColor="#F3F5F9" navbarhide="hide">-->
+
       <OHeader bgcolor="#FFD700" class="div-header">
         <OIcon slot="left" type="icon-scan_light"></OIcon>
         <div slot="center" class="header-button" @click="search">
@@ -14,8 +15,8 @@
       <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
           <OLoadingMore>臣妾正在努力加载哟...</OLoadingMore>
       </refresh>-->
-
-      <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
+<div>
+      <OSwiper style="margin-top: 100px;" :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
       <ImageTextGroup :images="images" class="top"></ImageTextGroup>
 
       <div class="rcmdrow">
@@ -73,7 +74,9 @@
           </div>
         </OTab>
       </OTabs>
-    </ONavPage>
+    <!--</ONavPage>-->
+    </div>
+
   </div>
 </template>
 

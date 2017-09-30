@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ONavPage
-                navbarhide="hide">
+        <!--<ONavPage-->
+                <!--navbarhide="hide">-->
             <div class="title-row">
                 <div class="arrow" @click="onclick"></div>
                 <div class="textdiv"><text class="text">分类</text></div>
@@ -68,7 +68,7 @@
                 <TabContent></TabContent>
               </OTabVertical><!---->
             </OTabsVertical>
-        </ONavPage>
+        <!--</ONavPage>-->
     </div>
 </template>
 <script>
