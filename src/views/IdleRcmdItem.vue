@@ -1,166 +1,164 @@
 <template>
-    <div class="Idlecolumn" @click="ShowDetail()">
-        <div class="Idlerow">
-            <image :src="user_avatar" class="Idleavatar"></image>
-            <div class="infoname">
-                <text class="username">{{username}}</text>
-                <div class="imagetext-row">
-                    <image :src="timeicon" class="timeicon"></image>
-                    <text class="time">{{Itime}}</text>
-                </div>
-            </div>
-        <text class="price">{{Iprice}}</text>
+  <div class="Idlecolumn" @click="detail">
+    <div class="Idlerow">
+      <image :src="user_avatar" class="Idleavatar"></image>
+      <div class="infoname">
+        <text class="username">{{username}}</text>
+        <div class="imagetext-row">
+          <image :src="timeicon" class="timeicon"></image>
+          <text class="time">{{Itime}}</text>
         </div>
-        <div class="photos">
-            <image :src="imageSrc[0]" class="goods" resize="cover" v-if="isOnePhoto"></image>
-            <ImageList :imageSrc="imageSrc" v-else></ImageList>
-        </div>
-        <div class="discribe">
-            <text class="discribeText" lines="2">{{discribe}}</text>
-        </div>
-        <div class="Idlerow">
-            <text class="IdleAddress">{{IAddress}}</text>
-            <text class="IdleLabel">{{ILabel}}</text>
-            <div v-if="islike" class="likes" >
-                <text :class="likeable" class="like-text">{{likeOrleave}}</text>
-            </div>
-            <div class="likes" v-else>
-                <text class="like-text">{{likes}}</text>
-                <div class="like-point"></div>
-                <text class="like-text">{{IleaveWord}}</text>
-            </div>
-        </div>
+      </div>
+      <text class="price">{{Iprice}}</text>
     </div>
+    <div class="photos">
+      <image :src="imageSrc[0]" class="goods" resize="cover" v-if="isOnePhoto"></image>
+      <ImageList :imageSrc="imageSrc" v-else></ImageList>
+    </div>
+    <div class="discribe">
+      <text class="discribeText" lines="2">{{discribe}}</text>
+    </div>
+    <div class="Idlerow">
+      <text class="IdleAddress">{{IAddress}}</text>
+      <text class="IdleLabel">{{ILabel}}</text>
+      <div v-if="islike" class="likes">
+        <text :class="likeable" class="like-text">{{likeOrleave}}</text>
+      </div>
+      <div class="likes" v-else>
+        <text class="like-text">{{likes}}</text>
+        <div class="like-point"></div>
+        <text class="like-text">{{IleaveWord}}</text>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-    .Idlecolumn {
-        flex-direction: column;
-        width: 750px;
-        background-color: white;
-        margin-bottom: 20px;
-    }
+  .Idlecolumn {
+    flex-direction: column;
+    width: 750px;
+    background-color: white;
+    margin-bottom: 20px;
+  }
 
-    .Idlerow {
-        margin-top: 20px;
-        margin-left: 20px;
-        padding-bottom: 20px;
-        flex-direction: row;
-        align-items: center;
-        width: 750px;
-    }
-    .imagetext-row{
-        flex-direction: row;
-        margin-top: 10px;
-        align-items: center;
-    }
+  .Idlerow {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    flex-direction: row;
+    align-items: center;
+    width: 750px;
+  }
 
-    .infoname {
-        flex-direction: column;
-        width: 420px;
-        margin-left: 20px;
-        justify-content: flex-end;
-    }
+  .imagetext-row {
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+  }
 
-    .username {
-        font-size: 32px;
-        font-weight: bold;
-    }
+  .infoname {
+    flex-direction: column;
+    width: 400px;
+    margin-left: 20px;
+  }
 
-    .Idleavatar {
-        height: 92px;
-        width: 92px;
-        border-radius: 46px;
-    }
+  .username {
+    font-size: 32px;
+    font-weight: bold;
+  }
 
-    .timeicon {
-        width: 18px;
-        height: 18px;
-    }
+  .Idleavatar {
+    height: 92px;
+    width: 92px;
+    border-radius: 46px;
+  }
 
-    .price {
-        color: red;
-        font-size: 42px;
-        font-weight: 300;
-        text-align: right;
-    }
+  .timeicon {
+    width: 18px;
+    height: 18px;
+  }
 
-    .time {
-        margin-left: 10px;
-        font-size: 24px;
-        color: #C8C8CD;
-    }
+  .price {
+    color: red;
+    font-size: 45px;
+    font-weight: 300;
+  }
 
-    .goods {
-        width: 400px;
-        height: 400px;
-        border-style: solid;
-    }
+  .time {
+    margin-left: 10px;
+    font-size: 24px;
+    color: #C8C8CD;
+  }
 
-    .photos {
-        margin-left: 20px;
-        margin-bottom: 10px;
-        margin-right: 5px;
-    }
+  .goods {
+    width: 400px;
+    height: 400px;
+    border-style: solid;
+  }
 
-    .discribe {
-        width: 750px;
-        padding-top: 20px;
-        margin-left: 20px;
-        padding-bottom: 20px;
-        border-bottom-color: #C8C8CD;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-    }
+  .photos {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+  }
 
-    .discribeText {
-        lines: 2;
-        font-size: 28px;
-        font-family: "PingFang SC";
-    }
+  .discribe {
+    width: 750px;
+    padding-top: 20px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    border-bottom-color: #C8C8CD;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
 
-    .IdleAddress {
-        flex: 1;
-        font-size: 24px;
-        color: #7dc5eb;
-    }
+  .discribeText {
+    lines: 2;
+    font-size: 28px;
+    font-family: "PingFang SC";
+  }
 
-    .IdleLabel {
-        flex: 2;
-        font-size: 24px;
-        color: #7dc5eb;
-    }
+  .IdleAddress {
+    flex: 1;
+    font-size: 24px;
+    color: #7dc5eb;
+  }
 
-    .likes {
-        flex-direction: row;
-        align-items: center;
-        flex: 1;
-        text-align: right;
-    }
-    .like-text{
-        font-size: 24px;
-        color: #888888;
-        text-align: right;
-    }
-    .like-point{
-        width: 6px;
-        height: 6px;
-        border-radius: 3px;
-        background-color: #888888;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+  .IdleLabel {
+    flex: 2;
+    font-size: 24px;
+    color: #7dc5eb;
+  }
+
+  .likes {
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    text-align: right;
+  }
+
+  .like-text {
+    font-size: 24px;
+    color: #888888;
+    text-align: right;
+  }
+
+  .like-point {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #888888;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 </style>
 
 <script>
   import ImageList from '../components/Imagelist.vue'
-//  const storage = weex.requireModule('storage')
 
+  const storage = weex.requireModule('storage')
   export default {
-    components: {
-      ImageList
-//      child: require('./RcmdItemDetail.vue')
-    },
+    components: {ImageList},
     props: {
       price: {
         default: 0.00
@@ -225,10 +223,18 @@
       }
     },
     methods: {
-      ShowDetail: function () {
-        const dataa = new BroadcastChannel('Data')
-        dataa.postMessage([this.Iprice, this.Itime, this.IAddress, this.ILabel, this.likes, this.IleaveWord, this.likeOrleave, this.islike, this.isOnePhoto])
-        this.jump('RcmdItemDetail')
+      detail () {
+        var image = ''
+        storage.setItem('value', this.Iprice + ',' + this.Itime + ',' + this.ILabel + ',' + this.IAddress + ',' + this.likes + ',' + this.username + ',' + this.user_avatar + ',' + this.discribe + ',' + this.IleaveWord + '')
+        for (var i = 0; i < this.imageSrc.length; i++) {
+          if (i !== this.imageSrc.length - 1) {
+            image = image + this.imageSrc[i] + ','
+          } else {
+            image = image + this.imageSrc[i]
+          }
+        }
+        storage.setItem('imagesrc', image)
+        this.jump('detail')
       }
     }
   }

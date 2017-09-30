@@ -1,14 +1,16 @@
 import idlefish from '../views/idlefish.vue'
 import fishpond from '../views/fishpond.vue'
-import publish from '../views/publish.vue'
 import message from '../views/message.vue'
 import home from '../views/home.vue'
 import indexweb from '../views/index-web.vue'
 import login from '../views/login.vue'
 import userinfo from '../views/userinfo.vue'
-import RcmdItemDetail from '../views/RcmdItemDetail.vue'
+import publishidle from '../views/publishIdle.vue'
 import classify from '../views/classify.vue'
 import chatpanel from '../views/chatpanel.vue'
+import detail from '../views/detail.vue'
+import test from '../views/Iinput.vue'
+import leaveword from '../views/leaveword.vue'
 
 const routes = [
   {
@@ -27,11 +29,6 @@ const routes = [
         component: fishpond
       },
       {
-        name: 'publish',
-        path: '/publish',
-        component: publish
-      },
-      {
         name: 'message',
         path: '/message',
         component: message
@@ -40,16 +37,6 @@ const routes = [
         name: 'home',
         path: '/home',
         component: home
-      },
-      {
-        name: 'classify',
-        path: '/classify',
-        component: classify
-      },
-      {
-        name: 'chatpanel',
-        path: '/chatpanel',
-        component: chatpanel
       }
     ]
   },
@@ -64,9 +51,35 @@ const routes = [
     component: userinfo
   },
   {
-    name: 'RcmdItemDetail',
-    path: '/RcmdItemDetail',
-    component: RcmdItemDetail
+    name: 'publishidle',
+    path: '/publishidle',
+    component: publishidle
+  },
+  {
+    name: 'chatpanel',
+    path: '/chatpanel',
+    component: chatpanel
+  },
+  {
+    name: 'classify',
+    path: '/classify',
+    component: classify
+  },
+  {
+    name: 'test',
+    path: '/test',
+    component: test
+  },
+  {
+    name: 'detail',
+    path: '/detail',
+    component: detail
+  },
+  {
+    name: 'leaveword',
+    path: '/leaveword',
+    component: leaveword
   }
 ]
+
 export default routes

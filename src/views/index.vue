@@ -76,9 +76,7 @@
     },
     methods: {
       publish () {
-        console.log('点击动画')
         var iconAdd = this.$refs.iconadd
-        // this.radius++
         var ra = 45
         animation.transition(iconAdd, {
           styles: {
@@ -88,7 +86,6 @@
           delay: 0,
           timingFunction: 'ease-in'
         }, function () {
-          console.log('动画完成')
         })
         setTimeout(() => {
           animation.transition(iconAdd, {
@@ -99,7 +96,6 @@
             delay: 0,
             timingFunction: 'ease-in'
           }, function () {
-            console.log('动画完成')
           })
           this.maskshow = true
         }, 200)
@@ -119,7 +115,6 @@
           delay: 0,
           timingFunction: 'linear'
         }, function () {
-          console.log('动画完成')
         })
       },
       tabBarOnClick (e) {
