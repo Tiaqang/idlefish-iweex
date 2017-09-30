@@ -293,7 +293,7 @@
       },
       data () {
         return {
-          islogin: true,
+          islogin: false,
           hasSeparateLine: true,
           UserName: this.username,
           Sign: this.sign,
