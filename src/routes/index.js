@@ -10,7 +10,6 @@ import classify from '../views/classify.vue'
 import chatpanel from '../views/chatpanel.vue'
 import detail from '../views/detail.vue'
 import test from '../views/Iinput.vue'
-import leaveword from '../views/leaveword.vue'
 
 const routes = [
   {
@@ -74,11 +73,6 @@ const routes = [
     name: 'detail',
     path: '/detail',
     component: detail
-  },
-  {
-    name: 'leaveword',
-    path: '/leaveword',
-    component: leaveword
   }
 ]
 

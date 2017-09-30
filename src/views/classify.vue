@@ -3,10 +3,10 @@
         <ONavPage
                 navbarhide="hide">
             <div class="title-row">
-                <div class="arrow" @click="jumpout()"></div>
+                <div class="arrow" @click="onclick"></div>
                 <div class="textdiv"><text class="text">分类</text></div>
             </div>
-            <OTabsVertical :value="tab4" @input="tabsChange4" :tabIndex="tabIndex4" class="tabs">
+            <OTabsVertical :value="tab1" @input="tabsChange1" :tabIndex="tabIndex1">
                 <OTabVertical label="房屋租赁" value="one">
                    <TabContent></TabContent>
                 </OTabVertical>
@@ -66,7 +66,7 @@
               </OTabVertical>
               <OTabVertical label="服饰配件" value="twenty">
                 <TabContent></TabContent>
-              </OTabVertical>
+              </OTabVertical><!---->
             </OTabsVertical>
         </ONavPage>
     </div>
@@ -85,20 +85,8 @@
     },
     data () {
       return {
-        items: [
-          {'id': '第一栏', 'value': 1},
-          {'id': '第二栏', 'value': 2},
-          {'id': '第三栏', 'value': 3},
-          {'id': '第四栏', 'value': 4}
-        ],
         tab1: 'one',
-        tab2: 'one',
-        tab3: 'one',
-        tab4: 'one',
-        tabIndex1: 0,
-        tabIndex2: 0,
-        tabIndex3: 0,
-        tabIndex4: 0
+        tabIndex1: 0
       }
     },
     methods: {
@@ -106,17 +94,8 @@
         this.tab1 = tabs[index].value
         this.tabIndex1 = index
       },
-      tabsChange2 (index, tabs) {
-        this.tab2 = tabs[index].value
-        this.tabIndex2 = index
-      },
-      tabsChange3 (index, tabs) {
-        this.tab3 = tabs[index].value
-        this.tabIndex3 = index
-      },
-      tabsChange4 (index, tabs) {
-        this.tab4 = tabs[index].value
-        this.tabIndex4 = index
+      onclick () {
+        this.jumpout()
       }
     }
   }

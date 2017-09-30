@@ -7,12 +7,13 @@
           <OIcon type="icon-search_light" color="#A9A9A9" size="33" class="header-button_icon"></OIcon>
           <text class="header-button_text">连衣裙</text>
         </div>
-        <OIcon slot="right" type="icon-sortlight" @click="jump('/classify')"></OIcon>
+        <div slot="right" @click="onClick">
+          <OIcon type="icon-sortlight"></OIcon>
+        </div>
       </OHeader>
       <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
           <OLoadingMore>臣妾正在努力加载哟...</OLoadingMore>
       </refresh>-->
-
 
       <OSwiper :imageLists="imagelists" :switchTime="3000" @swiperClick="swiperclick"></OSwiper>
       <ImageTextGroup :images="images" class="top"></ImageTextGroup>
@@ -72,7 +73,6 @@
           </div>
         </OTab>
       </OTabs>
-
     </ONavPage>
   </div>
 </template>
@@ -123,10 +123,21 @@
     margin-bottom: 10px;
     width: 750px;
   }
-  .textonimage{
+
+  .refresh {
+    height: 100px;
+  }
+
+  .scroller {
+    width: 750px;
+    height: auto;
+  }
+
+  .textonimage {
     flex-direction: row;
   }
-  .textonimage-div{
+
+  .textonimage-div {
     flex: 1;
     background-color: white;
   }
@@ -152,6 +163,7 @@
   import ImageList from '../components/Imagelist.vue'
   import ORefresh from '../../node_modules/iweex/src/o-components/components/refresh/O-Refresh-Cell.vue'
   import TextOnImage from '../components/TextOnImage.vue'
+
   const modal = weex.requireModule('modal')
 
   export default {
@@ -318,7 +330,9 @@
                 discribe: 'fhsdlkfjlfldsfjldsf'
               }]
           }
-        ]
+        ],
+        show: false
+
       }
     },
     computed: {
@@ -350,7 +364,13 @@
           this.show = false
         }, 1000)
       },
-      onPulldown () {}
+      onPulldown () {},
+      onClick () {
+        modal.toast({
+          message: 'click'
+        })
+        this.jump('classify')
+      }
     }
   }
 </script>
