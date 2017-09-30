@@ -9,7 +9,7 @@
           <text class="header-button_text">连衣裙</text>
         </div>
         <div slot="right" @click="onClick">
-        <OIcon type="icon-sortlight"></OIcon>
+          <OIcon type="icon-sortlight"></OIcon>
         </div>
       </OHeader>
       <!--<refresh @refresh="onrefresh" @pullingdown="onPulldown" :display="displayRefresh" class="refresh">
